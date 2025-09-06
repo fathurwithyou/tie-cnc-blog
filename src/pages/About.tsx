@@ -56,27 +56,47 @@ const About = () => {
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="group p-6 rounded-lg border border-border/50 bg-card/30 hover:bg-card/50 hover:border-border transition-all duration-300">
-                  <h3 className="font-heading text-xl font-semibold text-foreground mb-3">Frontend Development</h3>
+                  <div className="flex items-center gap-3 mb-3">
+                    <svg className="w-6 h-6 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" />
+                    </svg>
+                    <h3 className="font-heading text-xl font-semibold text-foreground">Capture The Flag</h3>
+                  </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    React, TypeScript, modern CSS, and component architecture patterns.
+                    Cybersecurity competitions focusing on hacking challenges and penetration testing.
                   </p>
                 </div>
                 <div className="group p-6 rounded-lg border border-border/50 bg-card/30 hover:bg-card/50 hover:border-border transition-all duration-300">
-                  <h3 className="font-heading text-xl font-semibold text-foreground mb-3">Development Tools</h3>
+                  <div className="flex items-center gap-3 mb-3">
+                    <svg className="w-6 h-6 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                    <h3 className="font-heading text-xl font-semibold text-foreground">Data Science</h3>
+                  </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    Build tools, testing frameworks, and developer experience optimization.
+                    Machine learning competitions and data analysis challenges.
                   </p>
                 </div>
                 <div className="group p-6 rounded-lg border border-border/50 bg-card/30 hover:bg-card/50 hover:border-border transition-all duration-300">
-                  <h3 className="font-heading text-xl font-semibold text-foreground mb-3">Best Practices</h3>
+                  <div className="flex items-center gap-3 mb-3">
+                    <svg className="w-6 h-6 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                    </svg>
+                    <h3 className="font-heading text-xl font-semibold text-foreground">Business Case Competition</h3>
+                  </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    Code quality, architecture patterns, and maintainable software design.
+                    Strategic business problem solving and consulting case competitions.
                   </p>
                 </div>
                 <div className="group p-6 rounded-lg border border-border/50 bg-card/30 hover:bg-card/50 hover:border-border transition-all duration-300">
-                  <h3 className="font-heading text-xl font-semibold text-foreground mb-3">Performance</h3>
+                  <div className="flex items-center gap-3 mb-3">
+                    <svg className="w-6 h-6 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                    </svg>
+                    <h3 className="font-heading text-xl font-semibold text-foreground">Competitive Programming</h3>
+                  </div>
                   <p className="text-muted-foreground leading-relaxed">
-                    Optimization techniques, measuring performance, and scaling applications.
+                    Algorithmic programming contests and problem-solving competitions.
                   </p>
                 </div>
               </div>

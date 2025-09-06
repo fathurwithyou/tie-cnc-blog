@@ -25,7 +25,7 @@ export function News({ limit }: { limit?: number } = {}) {
       <div className="max-w-4xl mx-auto px-6 animate-fade-in">
         
         {/* Header */}
-        <div className="mb-16">
+        <div className="mb-8">
           <div className="flex items-center justify-between mb-4">
             <h2 className="section-title font-heading font-bold text-3xl lg:text-4xl tracking-tight">
               Latest News

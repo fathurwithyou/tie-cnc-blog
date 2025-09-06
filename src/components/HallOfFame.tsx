@@ -37,7 +37,7 @@ export function HallOfFame({ limit = 3, showSeeAllLink = true }: HallOfFameProps
             )}
           </div>
           <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
-            Selected highlights that showcase measurable impact and recognized excellence.
+            Capture The Flag, Data Science, Business Case Competition, and Competitive Programming.
           </p>
         </div>
 
