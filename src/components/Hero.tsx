@@ -1,43 +1,52 @@
-import heroImage from "@/assets/hero-image.jpg";
-
 export function Hero() {
+  // Try to use /hero.jpg from public, fall back to /placeholder.svg
+  const heroPrimary = "/hero.jpg"; // place your image in public/hero.jpg
+  const heroFallback = "/placeholder.svg";
+
   return (
-    <section className="relative overflow-hidden bg-background">
-      <div className="max-w-7xl mx-auto px-6 py-24 lg:py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
-            <h1 className="font-ubuntu font-bold text-5xl lg:text-6xl text-foreground leading-tight">
-              Professional Tech Blog
-            </h1>
-            <p className="text-xl text-muted-foreground leading-relaxed font-ubuntu">
-              Explore in-depth articles about modern web development, software engineering, 
-              and technology insights. Written with clarity and precision.
-            </p>
-            <div className="flex space-x-4">
-              <a 
-                href="/blog" 
-                className="inline-flex items-center px-6 py-3 bg-primary text-primary-foreground font-ubuntu font-medium rounded-md hover:bg-primary/90 transition-colors shadow-md"
-              >
-                Read Articles
-              </a>
-              <a 
-                href="/about" 
-                className="inline-flex items-center px-6 py-3 bg-secondary text-secondary-foreground font-ubuntu font-medium rounded-md hover:bg-secondary/80 transition-colors"
-              >
-                About Us
-              </a>
+    <section className="pt-32 pb-16 bg-background">
+      <div className="max-w-4xl mx-auto px-6">
+        <div className="grid gap-10 md:grid-cols-2 md:items-center">
+          {/* Text */}
+          <div>
+            <div className="space-y-6 mb-12">
+              <h1 className="font-heading font-bold text-5xl lg:text-6xl text-foreground leading-tight tracking-tight">
+                Professional Tech Blog
+              </h1>
+              <p className="text-xl lg:text-2xl text-muted-foreground leading-relaxed font-light">
+                In-depth articles about modern web development, software engineering,
+                and technology insights. Written with clarity and precision.
+              </p>
+            </div>
+
+            {/* Actions */}
+            <div className="flex flex-col sm:flex-row gap-4 md:mb-0 mb-16">
+              <a href="/blog" className="btn btn-primary">Read Articles</a>
+              <a href="/about" className="btn btn-secondary">About</a>
             </div>
           </div>
-          <div className="relative">
-            <div className="aspect-video rounded-lg overflow-hidden shadow-lg border border-border">
-              <img 
-                src={heroImage} 
-                alt="Professional workspace with laptop and coffee"
-                className="w-full h-full object-cover"
+
+          {/* Image from public */}
+          <div className="order-first md:order-none">
+            <div className="aspect-[4/3] w-full overflow-hidden rounded-lg border border-border bg-muted/30">
+              <img
+                src={heroPrimary}
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  if (target.src !== window.location.origin + heroFallback) {
+                    target.src = heroFallback;
+                  }
+                }}
+                alt="Hero visual"
+                className="h-full w-full object-cover grayscale"
+                loading="eager"
+                decoding="async"
               />
             </div>
           </div>
         </div>
+
+        {/* Stats removed per request */}
       </div>
     </section>
   );

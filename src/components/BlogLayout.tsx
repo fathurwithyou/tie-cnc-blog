@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import { TableOfContents } from "./TableOfContents";
+import { Header } from "@/components/Header";
 
 interface BlogLayoutProps {
   children: ReactNode;
@@ -11,27 +12,7 @@ interface BlogLayoutProps {
 export function BlogLayout({ children, title, date, readTime }: BlogLayoutProps) {
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-background/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <a href="/" className="font-ubuntu font-bold text-xl text-foreground hover:text-muted-foreground transition-colors">
-              UbuntuTale
-            </a>
-            <nav className="flex space-x-6">
-              <a href="/" className="font-ubuntu text-muted-foreground hover:text-foreground transition-colors">
-                Home
-              </a>
-              <a href="/blog" className="font-ubuntu text-muted-foreground hover:text-foreground transition-colors">
-                Blog
-              </a>
-              <a href="/about" className="font-ubuntu text-muted-foreground hover:text-foreground transition-colors">
-                About
-              </a>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header currentPath="/blog" />
 
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">

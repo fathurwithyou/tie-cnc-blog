@@ -1,105 +1,107 @@
+import { Header } from "@/components/Header";
+
 const Blog = () => {
+  const blogPosts = [
+    {
+      title: "Getting Started with Modern Web Development",
+      summary: "Modern web development has evolved dramatically over the past few years. In this comprehensive guide, we'll explore the latest trends, tools, and best practices that every developer should know.",
+      date: "2024-03-15",
+      readTime: "8 min",
+      category: "Web Development",
+      author: "Sarah Chen",
+      slug: "modern-web-development"
+    },
+    {
+      title: "TypeScript Best Practices for Large Projects", 
+      summary: "Learn how to structure and organize TypeScript code in large projects. We'll cover type definitions, project organization, and advanced patterns that scale.",
+      date: "2024-03-10",
+      readTime: "12 min",
+      category: "TypeScript",
+      author: "Alex Rodriguez",
+      slug: "typescript-best-practices"
+    },
+    {
+      title: "Building Scalable React Applications",
+      summary: "Discover architectural patterns and tools for building large-scale React applications. From state management to component organization, learn what works in production.",
+      date: "2024-03-05", 
+      readTime: "15 min",
+      category: "React",
+      author: "Michael Park",
+      slug: "scalable-react-applications"
+    }
+  ];
+
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-US', {
+      month: 'long',
+      day: 'numeric',
+      year: 'numeric'
+    });
+  };
+
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-background/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <a href="/" className="font-ubuntu font-bold text-xl text-foreground hover:text-muted-foreground transition-colors">
-              UbuntuTale
-            </a>
-            <nav className="flex space-x-6">
-              <a href="/" className="font-ubuntu text-muted-foreground hover:text-foreground transition-colors">
-                Home
-              </a>
-              <a href="/blog" className="font-ubuntu text-foreground">
-                Blog
-              </a>
-              <a href="/news" className="font-ubuntu text-muted-foreground hover:text-foreground transition-colors">
-                News
-              </a>
-              <a href="/about" className="font-ubuntu text-muted-foreground hover:text-foreground transition-colors">
-                About
-              </a>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header currentPath="/blog" />
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/5 to-primary/10">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="font-ubuntu font-bold text-4xl lg:text-6xl text-foreground mb-6">
+      <section className="pt-32 pb-16 bg-background">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h1 className="font-heading font-bold text-4xl lg:text-5xl text-foreground mb-6 tracking-tight">
             Our Blog
           </h1>
-          <p className="text-xl text-muted-foreground font-ubuntu max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
             In-depth articles about web development, software engineering, and technology insights from our team of experts.
           </p>
         </div>
       </section>
 
-      <div className="max-w-4xl mx-auto px-6 py-16">
+      <div className="max-w-4xl mx-auto px-6 pb-24">
         <div className="space-y-12">
-          <article className="group">
-            <a href="/blog/modern-web-development" className="block">
-              <h2 className="font-ubuntu font-bold text-2xl lg:text-3xl text-foreground mb-4 group-hover:text-primary transition-colors">
-                Getting Started with Modern Web Development
-              </h2>
-              <p className="text-muted-foreground mb-4 font-ubuntu text-lg leading-relaxed">
-                Modern web development has evolved dramatically over the past few years. In this comprehensive guide, 
-                we'll explore the latest trends, tools, and best practices that every developer should know.
-              </p>
-              <div className="flex items-center space-x-4 text-muted-foreground font-ubuntu">
-                <time>March 15, 2024</time>
-                <span>•</span>
-                <span>8 min read</span>
-                <span>•</span>
-                <span>Web Development</span>
+          {blogPosts.map((post, index) => (
+            <article key={index} className="group">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex items-center px-3 py-1 rounded text-xs font-medium bg-muted/50 text-muted-foreground uppercase tracking-wide border border-border/50">
+                    {post.category}
+                  </span>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <time>{formatDate(post.date)}</time>
+                    <span>•</span>
+                    <span>{post.readTime}</span>
+                    <span>•</span>
+                    <span>By {post.author}</span>
+                  </div>
+                </div>
+
+                <h2 className="font-heading font-bold text-2xl lg:text-3xl text-foreground leading-tight group-hover:text-muted-foreground transition-colors duration-200">
+                  <a href={`/blog/${post.slug}`} className="block">
+                    {post.title}
+                  </a>
+                </h2>
+
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  {post.summary}
+                </p>
+
+                <div className="pt-2">
+                  <a 
+                    href={`/blog/${post.slug}`}
+                    className="inline-flex items-center text-foreground hover:text-muted-foreground transition-colors duration-200 font-medium"
+                  >
+                    Read full article
+                    <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
+                </div>
               </div>
-            </a>
-          </article>
 
-          <hr className="border-border" />
-
-          <article className="group">
-            <a href="#" className="block">
-              <h2 className="font-ubuntu font-bold text-2xl lg:text-3xl text-foreground mb-4 group-hover:text-primary transition-colors">
-                TypeScript Best Practices for Large Projects
-              </h2>
-              <p className="text-muted-foreground mb-4 font-ubuntu text-lg leading-relaxed">
-                Learn how to structure and organize TypeScript code in large projects. We'll cover type definitions, 
-                project organization, and advanced patterns that scale.
-              </p>
-              <div className="flex items-center space-x-4 text-muted-foreground font-ubuntu">
-                <time>March 10, 2024</time>
-                <span>•</span>
-                <span>12 min read</span>
-                <span>•</span>
-                <span>TypeScript</span>
-              </div>
-            </a>
-          </article>
-
-          <hr className="border-border" />
-
-          <article className="group">
-            <a href="#" className="block">
-              <h2 className="font-ubuntu font-bold text-2xl lg:text-3xl text-foreground mb-4 group-hover:text-primary transition-colors">
-                Building Scalable React Applications
-              </h2>
-              <p className="text-muted-foreground mb-4 font-ubuntu text-lg leading-relaxed">
-                Discover architectural patterns and tools for building large-scale React applications. 
-                From state management to component organization, learn what works in production.
-              </p>
-              <div className="flex items-center space-x-4 text-muted-foreground font-ubuntu">
-                <time>March 5, 2024</time>
-                <span>•</span>
-                <span>15 min read</span>
-                <span>•</span>
-                <span>React</span>
-              </div>
-            </a>
-          </article>
+              {index < blogPosts.length - 1 && (
+                <hr className="border-border mt-12" />
+              )}
+            </article>
+          ))}
         </div>
       </div>
     </div>

@@ -1,146 +1,121 @@
+import { Header } from "@/components/Header";
+import { useYaml } from "@/hooks/useYaml";
+
+interface NewsItem {
+  date: string;
+  title: string;
+  summary: string;
+  category: string;
+  readTime: string;
+}
+
+const formatDate = (dateString: string) => {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+  });
+};
+
 const News = () => {
+  const { data, loading, error } = useYaml<NewsItem>("/content/news.yaml");
+  
+  // Sort by date descending
+  const sortedNews = data ? [...data].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()) : [];
+
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border bg-background/80 backdrop-blur-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <a href="/" className="font-ubuntu font-bold text-xl text-foreground hover:text-muted-foreground transition-colors">
-              UbuntuTale
-            </a>
-            <nav className="flex space-x-6">
-              <a href="/" className="font-ubuntu text-muted-foreground hover:text-foreground transition-colors">
-                Home
-              </a>
-              <a href="/blog" className="font-ubuntu text-muted-foreground hover:text-foreground transition-colors">
-                Blog
-              </a>
-              <a href="/news" className="font-ubuntu text-foreground">
-                News
-              </a>
-              <a href="/about" className="font-ubuntu text-muted-foreground hover:text-foreground transition-colors">
-                About
-              </a>
-            </nav>
-          </div>
-        </div>
-      </header>
+      <Header currentPath="/news" />
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/5 to-primary/10">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <h1 className="font-ubuntu font-bold text-4xl lg:text-6xl text-foreground mb-6">
+      <section className="pt-32 pb-16 bg-background">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <h1 className="font-heading font-bold text-4xl lg:text-5xl text-foreground mb-6 tracking-tight">
             Latest News
           </h1>
-          <p className="text-xl text-muted-foreground font-ubuntu max-w-3xl mx-auto leading-relaxed">
-            Stay informed with the latest developments, industry insights, and company updates from the world of technology and web development.
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+            Stay informed with the latest developments, industry insights, and updates from the world of technology and web development.
           </p>
         </div>
       </section>
 
-      <div className="max-w-4xl mx-auto px-6 py-16">
+      <div className="max-w-4xl mx-auto px-6 pb-24">
+        {error && (
+          <div className="text-center py-12">
+            <p className="text-muted-foreground">Failed to load news content.</p>
+          </div>
+        )}
+
+        {loading && !data && (
+          <div className="space-y-8">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} className="animate-pulse space-y-4">
+                <div className="h-6 bg-muted/40 rounded w-24" />
+                <div className="h-8 bg-muted/40 rounded w-3/4" />
+                <div className="h-16 bg-muted/40 rounded" />
+                <div className="h-4 bg-muted/40 rounded w-1/2" />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {sortedNews.length === 0 && !loading && !error && (
+          <div className="text-center py-16">
+            <div className="max-w-md mx-auto">
+              <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-muted/50 flex items-center justify-center">
+                <svg className="w-8 h-8 text-muted-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                </svg>
+              </div>
+              <p className="text-muted-foreground text-lg">No news articles available yet.</p>
+            </div>
+          </div>
+        )}
+
         <div className="space-y-12">
-          <article className="group">
-            <a href="#" className="block">
-              <div className="flex items-center space-x-2 mb-3">
-                <span className="bg-primary/10 text-primary px-2 py-1 rounded-md text-xs font-ubuntu font-semibold">
-                  BREAKING NEWS
-                </span>
-              </div>
-              <h2 className="font-ubuntu font-bold text-2xl lg:text-3xl text-foreground mb-4 group-hover:text-primary transition-colors">
-                New JavaScript Framework Revolutionizes Frontend Development
-              </h2>
-              <p className="text-muted-foreground mb-4 font-ubuntu text-lg leading-relaxed">
-                A groundbreaking new JavaScript framework has been announced, promising to simplify component development 
-                and improve performance across web applications. Early adopters report significant improvements in development speed.
-              </p>
-              <div className="flex items-center space-x-4 text-muted-foreground font-ubuntu">
-                <time>December 28, 2024</time>
-                <span>•</span>
-                <span>Industry News</span>
-                <span>•</span>
-                <span>JavaScript</span>
-              </div>
-            </a>
-          </article>
+          {sortedNews.map((item, index) => (
+            <article key={index} className="group">
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex items-center px-3 py-1 rounded text-xs font-medium bg-muted/50 text-muted-foreground uppercase tracking-wide border border-border/50">
+                    {item.category}
+                  </span>
+                  <div className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <time>{formatDate(item.date)}</time>
+                    <span>•</span>
+                    <span>{item.readTime}</span>
+                  </div>
+                </div>
 
-          <hr className="border-border" />
+                <h2 className="font-heading font-bold text-2xl lg:text-3xl text-foreground leading-tight group-hover:text-muted-foreground transition-colors duration-200">
+                  <a href={`/news/${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="block">
+                    {item.title}
+                  </a>
+                </h2>
 
-          <article className="group">
-            <a href="#" className="block">
-              <div className="flex items-center space-x-2 mb-3">
-                <span className="bg-secondary/50 text-secondary-foreground px-2 py-1 rounded-md text-xs font-ubuntu font-semibold">
-                  COMPANY UPDATE
-                </span>
-              </div>
-              <h2 className="font-ubuntu font-bold text-2xl lg:text-3xl text-foreground mb-4 group-hover:text-primary transition-colors">
-                UbuntuTale Launches New Partnership Program
-              </h2>
-              <p className="text-muted-foreground mb-4 font-ubuntu text-lg leading-relaxed">
-                We're excited to announce our new partnership program designed to help organizations accelerate their 
-                digital transformation journey with cutting-edge web solutions and expert guidance.
-              </p>
-              <div className="flex items-center space-x-4 text-muted-foreground font-ubuntu">
-                <time>December 25, 2024</time>
-                <span>•</span>
-                <span>Company News</span>
-                <span>•</span>
-                <span>Partnerships</span>
-              </div>
-            </a>
-          </article>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  {item.summary}
+                </p>
 
-          <hr className="border-border" />
+                <div className="pt-2">
+                  <a 
+                    href={`/news/${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                    className="inline-flex items-center text-foreground hover:text-muted-foreground transition-colors duration-200 font-medium"
+                  >
+                    Read full article
+                    <svg className="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
 
-          <article className="group">
-            <a href="#" className="block">
-              <div className="flex items-center space-x-2 mb-3">
-                <span className="bg-accent/50 text-accent-foreground px-2 py-1 rounded-md text-xs font-ubuntu font-semibold">
-                  TECH UPDATE
-                </span>
-              </div>
-              <h2 className="font-ubuntu font-bold text-2xl lg:text-3xl text-foreground mb-4 group-hover:text-primary transition-colors">
-                React 19 Release Brings Major Performance Improvements
-              </h2>
-              <p className="text-muted-foreground mb-4 font-ubuntu text-lg leading-relaxed">
-                The latest React release introduces significant performance optimizations, new hooks, and improved 
-                developer experience features that will reshape how we build modern web applications.
-              </p>
-              <div className="flex items-center space-x-4 text-muted-foreground font-ubuntu">
-                <time>December 20, 2024</time>
-                <span>•</span>
-                <span>Technology</span>
-                <span>•</span>
-                <span>React</span>
-              </div>
-            </a>
-          </article>
-
-          <hr className="border-border" />
-
-          <article className="group">
-            <a href="#" className="block">
-              <div className="flex items-center space-x-2 mb-3">
-                <span className="bg-muted text-muted-foreground px-2 py-1 rounded-md text-xs font-ubuntu font-semibold">
-                  INDUSTRY INSIGHT
-                </span>
-              </div>
-              <h2 className="font-ubuntu font-bold text-2xl lg:text-3xl text-foreground mb-4 group-hover:text-primary transition-colors">
-                The Future of Web Development in 2025
-              </h2>
-              <p className="text-muted-foreground mb-4 font-ubuntu text-lg leading-relaxed">
-                Industry experts share their predictions for web development trends in 2025, including AI integration, 
-                serverless architecture adoption, and the evolution of progressive web applications.
-              </p>
-              <div className="flex items-center space-x-4 text-muted-foreground font-ubuntu">
-                <time>December 18, 2024</time>
-                <span>•</span>
-                <span>Industry Analysis</span>
-                <span>•</span>
-                <span>Trends</span>
-              </div>
-            </a>
-          </article>
+              {index < sortedNews.length - 1 && (
+                <hr className="border-border mt-12" />
+              )}
+            </article>
+          ))}
         </div>
       </div>
     </div>

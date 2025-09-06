@@ -51,24 +51,39 @@ export function TableOfContents({ className }: TableOfContentsProps) {
 
   if (toc.length === 0) return null;
 
+  const handleSelect = (id: string) => (e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (!el) return;
+    // Smooth scroll with offset for fixed header
+    const top = el.getBoundingClientRect().top + window.scrollY - 80;
+    window.scrollTo({ top, behavior: 'smooth' });
+    setActiveId(id);
+    // Update the URL hash without jumping
+    if (history.replaceState) {
+      history.replaceState(null, '', `#${id}`);
+    }
+  };
+
   return (
     <nav className={cn("space-y-1", className)}>
-      <h4 className="font-ubuntu font-medium text-foreground mb-4">Table of Contents</h4>
-      <ul className="space-y-2">
+      <h4 className="font-ubuntu font-medium text-foreground mb-3">Table of Contents</h4>
+      <ul className="space-y-1">
         {toc.map((item) => (
           <li key={item.id}>
             <a
               href={`#${item.id}`}
+              onClick={handleSelect(item.id)}
               className={cn(
-                "block py-1 text-sm transition-colors hover:text-foreground font-ubuntu",
+                "block rounded px-2 py-1 text-sm transition-colors font-ubuntu",
                 item.level === 1 && "font-medium",
                 item.level === 2 && "pl-4",
                 item.level === 3 && "pl-8",
                 item.level === 4 && "pl-12",
                 item.level > 4 && "pl-16",
                 activeId === item.id
-                  ? "text-foreground font-medium"
-                  : "text-muted-foreground"
+                  ? "bg-neutral-800 text-white"
+                  : "text-muted-foreground hover:text-foreground"
               )}
             >
               {item.text}

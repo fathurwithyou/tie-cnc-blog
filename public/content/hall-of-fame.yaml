@@ -1,0 +1,33 @@
+- year: "2022"
+  title: Best Open Source Contribution
+  field: Competitive Programming
+  description: Recognized for consistent, high-quality contributions to community tooling across multiple repositories.
+  members:
+    - Alex Johnson
+    - Priya Singh
+  image: /fame/open-source-2022.jpg
+- year: "2023"
+  title: Top Performance Case Study
+  field: Data Science
+  description: Achieved sub-100ms load times for a large-scale React app through careful code-splitting and caching strategies.
+  members:
+    - Marco Rossi
+    - Hana Kim
+    - Alex Johnson
+  image: /fame/perf-2023.jpg
+- year: "2024"
+  title: DX Excellence Award
+  field: Business Case
+  description: Introduced developer workflows that improved iteration speed by 10x with robust tooling and CI enhancements.
+  members:
+    - Priya Singh
+    - Hana Kim
+  image: /fame/dx-2024.jpg
+- year: "2024"
+  title: DX Excellence Award
+  field: Business Case
+  description: Introduced developer workflows that improved iteration speed by 10x with robust tooling and CI enhancements.
+  members:
+    - Priya Singh
+    - Hana Kim
+  image: /fame/dx-2024.jpg

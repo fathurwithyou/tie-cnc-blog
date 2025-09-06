@@ -65,7 +65,7 @@ export function InfiniteCarousel() {
                 </p>
                 {item.metric && (
                   <div className="pt-2 border-t border-border/30">
-                    <span className="text-xs font-ubuntu font-medium text-primary">
+                    <span className="text-xs font-ubuntu font-medium text-muted-foreground">
                       {item.metric}
                     </span>
                   </div>

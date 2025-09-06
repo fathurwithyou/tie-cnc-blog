@@ -1,0 +1,24 @@
+- title: Modern Architecture
+  description: Building scalable applications with clean, maintainable code using proven architectural patterns.
+  imageSrc: /focus/modern-architecture.jpg
+  imageAlt: System and architecture diagrams
+- title: Performance Focus
+  description: Optimized for speed and user experience across all devices with advanced techniques.
+  imageSrc: /focus/performance.jpg
+  imageAlt: Performance metrics charts
+- title: Developer Experience
+  description: Creating tools and workflows that enhance productivity and development efficiency.
+  imageSrc: /focus/developer-experience.jpg
+  imageAlt: Developer tools and workflows
+- title: Best Practices
+  description: Following industry standards and proven methodologies for reliable software.
+  imageSrc: /focus/best-practices.jpg
+  imageAlt: Code quality and standards
+- title: Continuous Learning
+  description: Staying current with latest technologies through dedicated research and exploration.
+  imageSrc: /focus/continuous-learning.jpg
+  imageAlt: Learning resources and research
+- title: Community Driven
+  description: Sharing knowledge and contributing to open source projects that benefit developers.
+  imageSrc: /focus/community.jpg
+  imageAlt: Community and collaboration

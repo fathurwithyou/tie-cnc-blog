@@ -1,75 +1,76 @@
-import whatWeDoImage from "@/assets/what-we-do.jpg";
 
-interface ServiceItem {
+import { MediaFeature } from "@/components/MediaFeature";
+import { useYaml } from "@/hooks/useYaml";
+
+interface FocusItem {
   title: string;
   description: string;
+  imageSrc: string;
+  imageAlt?: string;
 }
 
-const services: ServiceItem[] = [
-  {
-    title: "Modern Architecture",
-    description: "Building scalable applications with clean, maintainable code"
-  },
-  {
-    title: "Performance Focused",
-    description: "Optimized for speed and user experience across all devices"
-  },
-  {
-    title: "Developer Experience",
-    description: "Creating tools and workflows that enhance productivity"
-  },
-  {
-    title: "Best Practices",
-    description: "Following industry standards and proven methodologies"
-  },
-  {
-    title: "Continuous Learning",
-    description: "Staying current with the latest technologies and trends"
-  },
-  {
-    title: "Community Driven",
-    description: "Sharing knowledge and contributing to open source projects"
-  }
-];
+const useFocusItems = () => useYaml<FocusItem>("/content/focus.yaml");
 
 export function WhatWeDo() {
   return (
-    <section className="py-20 bg-background">
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
-          <div className="order-2 lg:order-1">
-            <img 
-              src={whatWeDoImage} 
-              alt="Modern web development workspace" 
-              className="w-full h-auto rounded-lg shadow-sm"
-            />
-          </div>
-          <div className="order-1 lg:order-2">
-            <h2 className="font-ubuntu font-bold text-3xl lg:text-4xl text-foreground mb-4">
-              What We Do
-            </h2>
-            <p className="text-lg text-muted-foreground font-ubuntu mb-8 leading-relaxed">
-              We focus on delivering exceptional solutions through modern development practices and cutting-edge technologies.
-            </p>
-          </div>
+    <section className="py-24 bg-background">
+      <div className="max-w-4xl mx-auto px-6">
+        
+        {/* Header */}
+        <div className="mb-16">
+          <h2 className="section-title font-heading font-bold text-3xl lg:text-4xl mb-4 tracking-tight">
+            What We Focus On
+          </h2>
+          <p className="text-lg text-muted-foreground leading-relaxed max-w-2xl">
+            We deliver exceptional solutions through modern development practices and 
+            a commitment to quality and innovation.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="bg-card border border-border rounded-lg p-6 hover:shadow-md transition-shadow"
-            >
-              <h3 className="font-ubuntu font-semibold text-xl text-foreground mb-3">
-                {service.title}
-              </h3>
-              <p className="text-muted-foreground font-ubuntu leading-relaxed">
-                {service.description}
+        {/* Focus list: image left, text right */}
+        <FocusList />
+        
+        {/* Bottom section */}
+        <div className="mt-16 pt-8 border-t border-border">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div>
+              <p className="text-sm text-muted-foreground">
+                Interested in working together?
               </p>
-            </div>
-          ))}
+          </div>
+          <a href="/about" className="btn btn-secondary text-sm">
+              Learn More
+            </a>
+          </div>
         </div>
       </div>
     </section>
+  );
+}
+
+function FocusList() {
+  const { data, loading, error } = useFocusItems();
+  if (error) return <p className="text-sm text-muted-foreground">Failed to load focus items.</p>;
+  if (loading || !data) {
+    return (
+      <div className="space-y-6">
+        <div className="h-24 bg-muted/40 border border-border rounded" />
+        <div className="h-24 bg-muted/40 border border-border rounded" />
+        <div className="h-24 bg-muted/40 border border-border rounded" />
+      </div>
+    );
+  }
+  return (
+    <div className="space-y-10">
+      {data.map((item) => (
+        <MediaFeature
+          key={item.title}
+          title={item.title}
+          description={item.description}
+          imageSrc={item.imageSrc}
+          imageAlt={item.imageAlt}
+        />
+      ))}
+    </div>
   );
 }

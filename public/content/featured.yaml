@@ -1,0 +1,12 @@
+- title: Getting Started with Modern Web Development
+  href: /blog/modern-web-development
+  summary: Explore the latest trends, tools, and best practices in modern web development...
+  readTime: 5 min read
+- title: TypeScript Best Practices
+  href: /blog/typescript-practices
+  summary: Learn how to write better TypeScript code with these proven patterns and techniques...
+  readTime: 8 min read
+- title: Building Scalable React Applications
+  href: /blog/scalable-react
+  summary: Discover architectural patterns and tools for building large-scale React applications...
+  readTime: 12 min read

@@ -103,6 +103,43 @@ Key principles include:
 - **SOLID principles** - Object-oriented design guidelines
 - **Consistent naming** - Use clear, descriptive names
 
+## Mathematics and Equations
+
+Modern technical writing often includes mathematical notation. Here are a few examples to demonstrate inline and block math in MDX content:
+
+Inline example: The famous identity $e^{i\pi} + 1 = 0$ shows the deep connection between fundamental constants.
+
+Display example using dollar delimiters:
+
+{/* $$
+\nabla \cdot \mathbf{E} = \frac{\rho}{\varepsilon_0}\qquad \text{and} \qquad \nabla \times \mathbf{E} = -\,\frac{\partial \mathbf{B}}{\partial t}
+$$ */}
+
+Code-fenced math (useful when a math renderer isn’t configured):
+
+$$
+\begin{aligned}
+ a^2 + b^2 &= c^2 \\
+ \int_{-\infty}^{\infty} e^{-x^2}\,dx &= \sqrt{\pi}
+\end{aligned}
+$$
+
+Note: Rendering of the `$...$` and `$$...$$` blocks may require a math plugin (e.g., KaTeX or MathJax) during MDX processing.
+
+## Images
+
+Plain Markdown image (served from `public/`):
+
+![Research diagram](/placeholder.svg)
+
+Figure with caption and neutral styling:
+
+<figure className="my-6">
+  <img src="/placeholder.svg" alt="Sample figure demonstrating image usage in MDX" className="w-full rounded border border-border" />
+  <figcaption className="text-sm text-muted-foreground mt-2">Figure 1: Sample image loaded from <code>public/placeholder.svg</code>. Replace with your own image under <code>public/</code>, e.g., <code>/images/sample.jpg</code>.</figcaption>
+  
+</figure>
+
 ## Conclusion
 
 Modern web development requires continuous learning and adaptation. By focusing on these fundamentals and staying updated with the latest trends, you'll be well-equipped to build exceptional web applications.
