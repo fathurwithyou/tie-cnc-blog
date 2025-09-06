@@ -50,13 +50,27 @@ export const Collaboration = () => {
     <section className="py-20 bg-background">
       <div className="max-w-4xl mx-auto px-6 animate-fade-in">
         <div className="max-w-4xl mx-auto">
-          <h2 className="section-title text-left font-ubuntu font-bold text-3xl lg:text-4xl mb-6">
-            Collaboration & Partnerships
-          </h2>
-          <p className="text-lg text-muted-foreground font-ubuntu mb-8 leading-relaxed">
-            Work with us on research, product development, and community initiatives. We partner with enterprises, academia,
-            non-profits, and media to create measurable impact.
-          </p>
+          <div className="flex justify-between items-start mb-6">
+            <div>
+              <h2 className="section-title text-left font-ubuntu font-bold text-3xl lg:text-4xl mb-4">
+                Collaboration & Partnerships
+              </h2>
+              <p className="text-lg text-muted-foreground font-ubuntu leading-relaxed">
+                Work with us on research, product development, and community initiatives. We partner with enterprises, academia,
+                non-profits, and media to create measurable impact.
+              </p>
+            </div>
+            <Button 
+              variant="outline" 
+              size="lg" 
+              className="font-ubuntu border-0 hover:border hover:border-border/50 rounded-sm transition-all duration-300 ml-8 flex-shrink-0"
+            >
+              Start a Partnership
+              <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Button>
+          </div>
 
           {/* Offerings (Media partners as part of offering) */}
           {error && <p className="text-sm text-muted-foreground">Failed to load partnership offerings.</p>}
@@ -89,20 +103,6 @@ export const Collaboration = () => {
               })}
             </div>
           )}
-
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-start mt-4">
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="font-ubuntu border-0 hover:border hover:border-border/50 rounded-sm transition-all duration-300"
-            >
-              Start a Partnership
-              <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-              </svg>
-            </Button>
-          </div>
         </div>
       </div>
     </section>
