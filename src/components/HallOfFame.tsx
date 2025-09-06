@@ -23,7 +23,7 @@ export function HallOfFame({ limit = 3, showSeeAllLink = true }: HallOfFameProps
   
   return (
     <section className="py-24 bg-background">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-4xl mx-auto px-6 animate-fade-in">
         <div className="mb-12">
           <div className="flex items-center justify-between mb-4">
             <h2 className="section-title font-heading font-bold text-3xl lg:text-4xl tracking-tight">Hall of Fame</h2>

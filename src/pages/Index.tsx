@@ -26,7 +26,7 @@ const Index = () => {
 
       {/* Featured Articles */}
       <section className="py-24 bg-background">
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-4xl mx-auto px-6 animate-fade-in">
           <div className="mb-16">
             <h2 className="section-title font-ubuntu font-bold text-3xl lg:text-4xl mb-4">
               Featured Articles

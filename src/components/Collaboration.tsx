@@ -13,7 +13,7 @@ export const Collaboration = () => {
 
   return (
     <section className="py-20 bg-background">
-      <div className="max-w-4xl mx-auto px-6">
+      <div className="max-w-4xl mx-auto px-6 animate-fade-in">
         <div className="max-w-4xl mx-auto">
           <h2 className="section-title text-left font-ubuntu font-bold text-3xl lg:text-4xl mb-6">
             Collaboration & Partnerships
