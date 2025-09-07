@@ -4,9 +4,11 @@ import { useYaml } from "@/hooks/useYaml";
 interface NewsItem {
   date: string;
   title: string;
+  slug: string;
   summary: string;
   category: string;
   readTime: string;
+  mdx?: string;
 }
 
 const formatDate = (dateString: string) => {
@@ -31,7 +33,7 @@ const News = () => {
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-background">
         <div className="max-w-4xl mx-auto px-6 text-center">
-          <h1 className="font-heading font-bold text-4xl lg:text-5xl text-foreground mb-6 tracking-tight">
+          <h1 className="font-ubuntu font-bold text-4xl lg:text-5xl text-foreground mb-6 tracking-tight">
             Latest News
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -88,8 +90,8 @@ const News = () => {
                   </div>
                 </div>
 
-                <h2 className="font-heading font-bold text-2xl lg:text-3xl text-foreground leading-tight group-hover:text-muted-foreground transition-colors duration-200">
-                  <a href={`/news/${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="block">
+                <h2 className="font-ubuntu font-bold text-2xl lg:text-3xl text-foreground leading-tight group-hover:text-muted-foreground transition-colors duration-200">
+                  <a href={`/news/${item.slug}`} className="block">
                     {item.title}
                   </a>
                 </h2>
@@ -100,7 +102,7 @@ const News = () => {
 
                 <div className="pt-2">
                   <a 
-                    href={`/news/${item.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`}
+                    href={`/news/${item.slug}`}
                     className="inline-flex items-center text-foreground hover:text-muted-foreground transition-colors duration-200 font-medium"
                   >
                     Read full article

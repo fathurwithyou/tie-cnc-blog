@@ -1,4 +1,6 @@
 import { useYaml } from '@/hooks/useYaml';
+import React from 'react';
+import { Button } from '@/components/ui/button';
 
 interface FameItem {
   year?: string;
@@ -13,13 +15,20 @@ interface FameItem {
 interface HallOfFameProps {
   limit?: number;           // if provided, limits items shown
   showSeeAllLink?: boolean; // if true and limited, show link to /hall-of-fame
+  showFilter?: boolean;     // show field filter controls
 }
 
-export function HallOfFame({ limit = 3, showSeeAllLink = true }: HallOfFameProps = {}) {
+export function HallOfFame({ limit = 3, showSeeAllLink = true, showFilter = true }: HallOfFameProps = {}) {
   const { data, loading, error } = useYaml<FameItem>("/content/hall-of-fame.yaml");
   const raw = Array.isArray(data) ? data : [];
   const list = raw.filter(isFameEntry);
-  const visible = typeof limit === 'number' ? list.slice(0, Math.max(0, limit)) : list;
+  const [selectedField, setSelectedField] = React.useState<string>('All');
+  const fields = React.useMemo(() => {
+    const vals = Array.from(new Set(list.map((i) => (i.field ?? '').toString().trim()).filter(Boolean)));
+    return ['All', ...vals];
+  }, [list]);
+  const filtered = selectedField === 'All' ? list : list.filter((i) => (i.field ?? '').toString().trim() === selectedField);
+  const visible = typeof limit === 'number' ? filtered.slice(0, Math.max(0, limit)) : filtered;
   
   return (
     <section className="py-24 bg-background">
@@ -40,6 +49,17 @@ export function HallOfFame({ limit = 3, showSeeAllLink = true }: HallOfFameProps
             Capture The Flag, Data Science, Business Case Competition, and Competitive Programming.
           </p>
         </div>
+
+        {/* Filter by field (hidden when showFilter is false) */}
+        {showFilter && (
+          <div className="mb-6 flex flex-wrap gap-2">
+            {fields.map((f) => (
+              <Button key={f} size="sm" variant={selectedField === f ? 'default' : 'outline'} onClick={() => setSelectedField(f)}>
+                {f}
+              </Button>
+            ))}
+          </div>
+        )}
 
         <div className="space-y-10">
           {error && <p className="text-sm text-muted-foreground">Failed to load hall of fame.</p>}

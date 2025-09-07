@@ -16,8 +16,8 @@ const Index = () => {
       {/* Hero Section */}
       <Hero />
 
-      {/* Hall of Fame (limited on landing) */}
-      <HallOfFame limit={3} showSeeAllLink />
+      {/* Hall of Fame (limited on landing, hide filter) */}
+      <HallOfFame limit={3} showSeeAllLink showFilter={false} />
 
       {/* News Section */}
       <div id="news">

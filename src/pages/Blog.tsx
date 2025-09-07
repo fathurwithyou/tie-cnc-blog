@@ -1,4 +1,6 @@
 import { Header } from "@/components/Header";
+import React from 'react';
+import { Button } from "@/components/ui/button";
 
 const Blog = () => {
   const blogPosts = [
@@ -40,6 +42,11 @@ const Blog = () => {
     });
   };
 
+  const [selected, setSelected] = React.useState<string>('All');
+  const topics = Array.from(new Set(blogPosts.map(p => p.category)));
+  const sorted = [...blogPosts].sort((a,b)=> new Date(b.date).getTime()-new Date(a.date).getTime());
+  const filtered = selected==='All'? sorted : sorted.filter(p=> p.category===selected);
+
   return (
     <div className="min-h-screen bg-background">
       <Header currentPath="/blog" />
@@ -57,8 +64,16 @@ const Blog = () => {
       </section>
 
       <div className="max-w-4xl mx-auto px-6 pb-24">
+        {/* Filter */}
+        <div className="mb-8 flex flex-wrap gap-2">
+          <Button size="sm" variant={selected==='All' ? 'default':'outline'} onClick={()=>setSelected('All')}>All</Button>
+          {topics.map(t => (
+            <Button key={t} size="sm" variant={selected===t ? 'default':'outline'} onClick={()=>setSelected(t)}>{t}</Button>
+          ))}
+        </div>
+
         <div className="space-y-12">
-          {blogPosts.map((post, index) => (
+          {filtered.map((post, index) => (
             <article key={index} className="group">
               <div className="space-y-4">
                 <div className="flex items-center gap-3">

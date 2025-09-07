@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 
 interface TocItem {
@@ -14,40 +14,87 @@ interface TableOfContentsProps {
 export function TableOfContents({ className }: TableOfContentsProps) {
   const [toc, setToc] = useState<TocItem[]>([]);
   const [activeId, setActiveId] = useState<string>("");
+  const observerRef = React.useRef<IntersectionObserver | null>(null);
+  const mutationRef = React.useRef<MutationObserver | null>(null);
+  const mutateTimer = React.useRef<number | undefined>(undefined);
 
+  // Scan headings utility
+  const scanHeadings = React.useCallback(() => {
+    const container = document.querySelector<HTMLElement>("article.prose") || document.body;
+    const headings = Array.from(container.querySelectorAll<HTMLElement>("h1, h2, h3, h4, h5, h6"));
+    const slugify = (str: string) =>
+      str.toLowerCase().trim().replace(/[\s_]+/g, "-").replace(/[^a-z0-9-]/g, "").replace(/-+/g, "-");
+    const used = new Map<string, number>();
+    const makeUnique = (base: string) => {
+      if (!base) return "";
+      const count = used.get(base) || 0;
+      used.set(base, count + 1);
+      return count === 0 ? base : `${base}-${count + 1}`;
+    };
+    const items: TocItem[] = [];
+    for (const h of headings) {
+      const txt = (h.textContent || "").trim();
+      if (!txt) continue;
+      let id = h.id || makeUnique(slugify(txt));
+      if (!h.id && id) h.id = id;
+      if (!id) continue;
+      items.push({ id, text: txt, level: parseInt(h.tagName.charAt(1)) });
+    }
+    setToc(items);
+    return headings;
+  }, []);
+
+  // Observe headings for active section
   useEffect(() => {
-    const headings = Array.from(document.querySelectorAll("h1, h2, h3, h4, h5, h6"));
-    
-    const tocItems: TocItem[] = headings.map((heading) => {
-      const id = heading.id || heading.textContent?.toLowerCase().replace(/\s+/g, "-") || "";
-      if (!heading.id) {
-        heading.id = id;
-      }
-      
-      return {
-        id,
-        text: heading.textContent || "",
-        level: parseInt(heading.tagName.charAt(1)),
-      };
-    });
-
-    setToc(tocItems);
-
-    const observer = new IntersectionObserver(
+    // Disconnect any previous observer
+    observerRef.current?.disconnect();
+    const headings = scanHeadings();
+    const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
+          if (entry.isIntersecting) setActiveId(entry.target.id);
         });
       },
       { rootMargin: "-100px 0% -66%" }
     );
+    headings.forEach((h) => io.observe(h));
+    observerRef.current = io;
 
-    headings.forEach((heading) => observer.observe(heading));
+    // Initialize from hash if present
+    if (location.hash) {
+      const hashId = location.hash.slice(1);
+      if (hashId) setActiveId(hashId);
+    }
+    return () => io.disconnect();
+  }, [scanHeadings]);
 
-    return () => observer.disconnect();
-  }, []);
+  // Mutation observer to rebuild ToC when MDX content loads/changes
+  useEffect(() => {
+    const container = document.querySelector<HTMLElement>("article.prose");
+    if (!container) return;
+    const mo = new MutationObserver(() => {
+      // debounce rebuilds
+      window.clearTimeout(mutateTimer.current);
+      mutateTimer.current = window.setTimeout(() => {
+        // rebuild headings and reattach IO
+        observerRef.current?.disconnect();
+        const headings = scanHeadings();
+        const io = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) setActiveId(entry.target.id);
+            });
+          },
+          { rootMargin: "-100px 0% -66%" }
+        );
+        headings.forEach((h) => io.observe(h));
+        observerRef.current = io;
+      }, 50);
+    });
+    mo.observe(container, { childList: true, subtree: true, characterData: true });
+    mutationRef.current = mo;
+    return () => mo.disconnect();
+  }, [scanHeadings]);
 
   if (toc.length === 0) return null;
 
@@ -68,7 +115,7 @@ export function TableOfContents({ className }: TableOfContentsProps) {
   return (
     <nav className={cn("space-y-1", className)}>
       <h4 className="font-ubuntu font-medium text-foreground mb-3">Table of Contents</h4>
-      <ul className="space-y-1">
+      <ul className="space-y-1 max-h-96 overflow-y-auto pr-2">
         {toc.map((item) => (
           <li key={item.id}>
             <a
@@ -82,7 +129,7 @@ export function TableOfContents({ className }: TableOfContentsProps) {
                 item.level === 4 && "pl-12",
                 item.level > 4 && "pl-16",
                 activeId === item.id
-                  ? "bg-neutral-800 text-white"
+                  ? "bg-accent text-accent-foreground"
                   : "text-muted-foreground hover:text-foreground"
               )}
             >

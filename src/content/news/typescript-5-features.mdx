@@ -1,0 +1,63 @@
+# TypeScript 5.0 Features Deep Dive
+
+TypeScript 5.0 brings significant improvements and new features that enhance developer experience and code reliability. Let's explore the key additions that make this release noteworthy.
+
+## Decorators Support
+
+One of the most anticipated features in TypeScript 5.0 is the official support for decorators. This feature allows developers to add metadata and modify classes, methods, and properties declaratively.
+
+```typescript
+function logged(target: any, propertyName: string, descriptor: PropertyDescriptor) {
+  const method = descriptor.value;
+  descriptor.value = function (...args: any[]) {
+    console.log(`Calling ${propertyName} with arguments:`, args);
+    return method.apply(this, args);
+  };
+}
+
+class Calculator {
+  @logged
+  add(a: number, b: number): number {
+    return a + b;
+  }
+}
+```
+
+## Performance Enhancements
+
+TypeScript 5.0 introduces significant performance improvements:
+
+- **Faster type checking** - Up to 20% improvement in large codebases
+- **Reduced memory usage** - More efficient internal data structures
+- **Improved incremental compilation** - Better caching strategies
+
+## New Utility Types
+
+Several new utility types have been added to make common type transformations easier:
+
+```typescript
+// Const assertion improvements
+const fruits = ['apple', 'banana', 'orange'] as const;
+type Fruit = typeof fruits[number]; // 'apple' | 'banana' | 'orange'
+
+// Template literal pattern improvements
+type EventName<T extends string> = `on${Capitalize<T>}`;
+type ClickEvent = EventName<'click'>; // 'onClick'
+```
+
+## Enhanced Error Messages
+
+TypeScript 5.0 provides more helpful error messages with better context and suggestions for common mistakes.
+
+## Migration Guide
+
+Upgrading to TypeScript 5.0 is straightforward for most projects:
+
+1. Update your TypeScript version: `npm install -D typescript@5.0`
+2. Update your tsconfig.json if needed
+3. Run type checking to identify any breaking changes
+4. Consider enabling new features like decorators
+
+## Conclusion
+
+TypeScript 5.0 represents a significant step forward in the language's evolution, offering better performance, enhanced features, and improved developer experience. The addition of decorators and performance improvements make it a compelling upgrade for any TypeScript project.

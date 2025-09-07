@@ -1,0 +1,35 @@
+- title: Getting Started with Modern Web Development
+  slug: modern-web-development
+  date: 2024-03-15
+  readTime: 8 min read
+  summary: Modern web development has evolved dramatically over the past few years.
+  topic: Web Development
+  href: /blog/modern-web-development
+  mdx: sample-post.mdx
+
+- title: TypeScript Best Practices for Large Projects
+  slug: typescript-practices
+  date: 2024-03-10
+  readTime: 12 min read
+  summary: Learn how to structure and organize TypeScript code in large projects.
+  topic: TypeScript
+  href: /blog/typescript-practices
+  mdx: sample-post.mdx
+
+- title: Building Scalable React Applications
+  slug: scalable-react
+  date: 2024-03-05
+  readTime: 15 min read
+  summary: Architectural patterns and tools for building large-scale React applications.
+  topic: React
+  href: /blog/scalable-react
+  mdx: sample-post.mdx
+
+- title: Performance Optimization Deep Dive
+  slug: performance-deep-dive
+  date: 2024-02-25
+  readTime: 10 min read
+  summary: Techniques to improve web performance using modern tools and measurements.
+  topic: Performance
+  href: /blog/performance-deep-dive
+  mdx: sample-post.mdx

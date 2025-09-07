@@ -1,0 +1,320 @@
+# CSS Grid vs Flexbox: When to Use Each
+
+Both CSS Grid and Flexbox are powerful layout systems, but they serve different purposes. Understanding when to use each one will help you create more efficient and maintainable layouts.
+
+## CSS Grid: Two-Dimensional Layouts
+
+CSS Grid excels at creating complex, two-dimensional layouts where you need precise control over both rows and columns.
+
+### When to Use CSS Grid
+
+- **Page layouts** with header, sidebar, main content, and footer
+- **Card grids** with varying heights
+- **Complex forms** with aligned labels and inputs
+- **Magazine-style layouts** with overlapping content
+
+### CSS Grid Examples
+
+```css
+/* Basic grid layout */
+.container {
+  display: grid;
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas: 
+    "header header header"
+    "sidebar main aside"
+    "footer footer footer";
+  gap: 20px;
+  min-height: 100vh;
+}
+
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
+.main { grid-area: main; }
+.aside { grid-area: aside; }
+.footer { grid-area: footer; }
+
+/* Responsive card grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Masonry-like layout */
+.masonry {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-auto-rows: 20px;
+  gap: 10px;
+}
+
+.masonry-item {
+  grid-row-end: span var(--span-size);
+}
+```
+
+## Flexbox: One-Dimensional Layouts
+
+Flexbox is perfect for one-dimensional layouts where you need to distribute space along a single axis.
+
+### When to Use Flexbox
+
+- **Navigation bars** with evenly spaced items
+- **Centering content** vertically and horizontally
+- **Form controls** in a row
+- **Card content** alignment within individual cards
+
+### Flexbox Examples
+
+```css
+/* Navigation bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+/* Perfect centering */
+.center-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* Flexible card layout */
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-content {
+  flex: 1;
+  padding: 1rem;
+}
+
+.card-actions {
+  padding: 1rem;
+  margin-top: auto;
+}
+
+/* Form row */
+.form-row {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+}
+
+.form-group {
+  flex: 1;
+}
+```
+
+## Combining Grid and Flexbox
+
+The most powerful approach is combining both systems:
+
+```css
+/* Grid for overall layout, flexbox for components */
+.app-layout {
+  display: grid;
+  grid-template-areas: 
+    "header"
+    "main"
+    "footer";
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.header {
+  grid-area: header;
+  display: flex; /* Flexbox for header content */
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.main {
+  grid-area: main;
+  display: grid; /* Grid for main content areas */
+  grid-template-columns: 250px 1fr;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.sidebar {
+  display: flex; /* Flexbox for sidebar items */
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.content-area {
+  display: grid; /* Grid for content layout */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  display: flex; /* Flexbox for card internals */
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+}
+```
+
+## Decision Framework
+
+Use this decision tree to choose the right layout method:
+
+```
+Do you need two-dimensional control?
+├── YES → Use CSS Grid
+│   ├── Complex page layout → Grid
+│   ├── Card/item grid → Grid
+│   └── Overlapping content → Grid
+└── NO → Use Flexbox
+    ├── Navigation → Flexbox
+    ├── Centering → Flexbox
+    ├── Form controls → Flexbox
+    └── Component internals → Flexbox
+```
+
+## Performance Considerations
+
+### CSS Grid Performance
+```css
+/* Efficient grid */
+.efficient-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* Avoid complex calculations in grid-template-rows */
+}
+
+/* Less efficient */
+.complex-grid {
+  display: grid;
+  grid-template-columns: calc(33.333% - 20px) calc(33.333% - 20px) calc(33.333% - 20px);
+}
+```
+
+### Flexbox Performance
+```css
+/* Efficient flexbox */
+.efficient-flex {
+  display: flex;
+  gap: 1rem; /* Better than margins for spacing */
+}
+
+/* Less efficient */
+.complex-flex {
+  display: flex;
+}
+.complex-flex > * {
+  margin-right: 1rem;
+  flex: 1 1 calc(33.333% - 1rem);
+}
+```
+
+## Browser Support and Fallbacks
+
+Both Grid and Flexbox have excellent browser support, but consider fallbacks for older browsers:
+
+```css
+/* Fallback approach */
+.layout {
+  /* Fallback for older browsers */
+  display: block;
+}
+
+.layout {
+  /* Modern browsers */
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 2rem;
+}
+
+/* Feature query for enhanced support */
+@supports (display: grid) {
+  .enhanced-layout {
+    display: grid;
+    grid-template-areas: 
+      "header header"
+      "main sidebar"
+      "footer footer";
+  }
+}
+```
+
+## Common Patterns
+
+### Holy Grail Layout with Grid
+```css
+.holy-grail {
+  display: grid;
+  grid-template: 
+    "header header header" auto
+    "nav main aside" 1fr
+    "footer footer footer" auto
+    / 200px 1fr 200px;
+  min-height: 100vh;
+}
+```
+
+### Sticky Footer with Flexbox
+```css
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+```
+
+## Debugging Tips
+
+### Grid Debugging
+```css
+/* Visualize grid lines */
+.debug-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1rem;
+}
+
+.debug-grid > * {
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid red;
+}
+```
+
+### Flexbox Debugging
+```css
+/* Visualize flex containers */
+.debug-flex {
+  display: flex;
+  outline: 2px solid blue;
+}
+
+.debug-flex > * {
+  outline: 1px solid red;
+  background: rgba(255, 0, 0, 0.1);
+}
+```
+
+## Conclusion
+
+CSS Grid and Flexbox are complementary technologies. Use Grid for two-dimensional layouts and overall page structure, and Flexbox for one-dimensional component layouts and content alignment. Combining both gives you the most flexible and maintainable CSS architecture.

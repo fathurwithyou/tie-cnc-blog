@@ -1,18 +1,20 @@
 import { ReactNode } from "react";
 import { TableOfContents } from "./TableOfContents";
 import { Header } from "@/components/Header";
+import { MDXProvider } from "./MDXProvider";
 
 interface BlogLayoutProps {
   children: ReactNode;
   title?: string;
   date?: string;
   readTime?: string;
+  currentPath?: string;
 }
 
-export function BlogLayout({ children, title, date, readTime }: BlogLayoutProps) {
+export function BlogLayout({ children, title, date, readTime, currentPath = "/blog" }: BlogLayoutProps) {
   return (
     <div className="min-h-screen bg-background">
-      <Header currentPath="/blog" />
+      <Header currentPath={currentPath} />
 
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
@@ -32,7 +34,9 @@ export function BlogLayout({ children, title, date, readTime }: BlogLayoutProps)
               </header>
             )}
             <article className="prose prose-lg max-w-none">
-              {children}
+              <MDXProvider>
+                {children}
+              </MDXProvider>
             </article>
           </main>
 

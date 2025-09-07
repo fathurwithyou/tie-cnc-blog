@@ -5,6 +5,8 @@
 /* Minimalist design system inspired by ans4175.dev */
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@300;400;500;600&display=swap');
 
+/* Runtime syntax highlighting with react-syntax-highlighter */
+
 @layer base {
   :root {
     /* Minimalist monochromatic palette */
@@ -108,6 +110,31 @@
     --sidebar-border: 0 0% 14%;
     --sidebar-ring: 0 0% 83%;
   }
+
+  /* Syntax highlighting color scheme */
+  :root {
+    --code-bg: 0 0% 96%;
+    --code-text: 0 0% 9%;
+    --code-comment: 0 0% 55%;
+    --code-keyword: 220 90% 35%;
+    --code-string: 140 50% 35%;
+    --code-number: 30 80% 40%;
+    --code-function: 260 60% 45%;
+    --code-variable: 200 70% 40%;
+    --code-operator: 0 0% 25%;
+  }
+
+  .dark {
+    --code-bg: 0 0% 14%;
+    --code-text: 0 0% 95%;
+    --code-comment: 0 0% 55%;
+    --code-keyword: 220 90% 70%;
+    --code-string: 140 60% 70%;
+    --code-number: 30 80% 70%;
+    --code-function: 260 60% 75%;
+    --code-variable: 200 70% 70%;
+    --code-operator: 0 0% 75%;
+  }
 }
 
 @layer base {
@@ -206,28 +233,126 @@
     text-decoration-color: hsl(var(--foreground));
   }
   
+  /* Inline code */
   .prose code {
-    @apply bg-muted text-foreground;
+    background: hsl(var(--muted));
+    color: hsl(var(--foreground));
     padding: 0.125rem 0.375rem;
     border-radius: 0.25rem;
     font-size: 0.9em;
     font-weight: 500;
+    border: 1px solid hsl(var(--border));
   }
   
-  .prose pre {
-    @apply bg-muted border border-border;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    overflow-x: auto;
-    font-size: 0.9rem;
-    line-height: 1.6;
+  /* Code block containers with copy button */
+  .prose .relative.group {
+    margin: 1.5rem 0;
   }
-  
-  .prose pre code {
-    @apply bg-transparent;
-    padding: 0;
-    border-radius: 0;
-    font-weight: 400;
+
+  /* Text selection colors for syntax highlighter - high contrast */
+  .prose .relative.group::selection,
+  .prose .relative.group *::selection,
+  .prose .relative.group code::selection,
+  .prose .relative.group code *::selection,
+  .prose .relative.group pre::selection,
+  .prose .relative.group pre *::selection,
+  .prose div[class*="react-syntax-highlighter"]::selection,
+  .prose div[class*="react-syntax-highlighter"] *::selection {
+    background: #0969da !important;
+    color: #ffffff !important;
+  }
+
+  .prose .relative.group::-moz-selection,
+  .prose .relative.group *::-moz-selection,
+  .prose .relative.group code::-moz-selection,
+  .prose .relative.group code *::-moz-selection,
+  .prose .relative.group pre::-moz-selection,
+  .prose .relative.group pre *::-moz-selection,
+  .prose div[class*="react-syntax-highlighter"]::-moz-selection,
+  .prose div[class*="react-syntax-highlighter"] *::-moz-selection {
+    background: #0969da !important;
+    color: #ffffff !important;
+  }
+
+  /* Dark mode selection */
+  .dark .prose .relative.group::selection,
+  .dark .prose .relative.group *::selection,
+  .dark .prose .relative.group code::selection,
+  .dark .prose .relative.group code *::selection,
+  .dark .prose .relative.group pre::selection,
+  .dark .prose .relative.group pre *::selection,
+  .dark .prose div[class*="react-syntax-highlighter"]::selection,
+  .dark .prose div[class*="react-syntax-highlighter"] *::selection {
+    background: #58a6ff !important;
+    color: #0d1117 !important;
+  }
+
+  .dark .prose .relative.group::-moz-selection,
+  .dark .prose .relative.group *::-moz-selection,
+  .dark .prose .relative.group code::-moz-selection,
+  .dark .prose .relative.group code *::-moz-selection,
+  .dark .prose .relative.group pre::-moz-selection,
+  .dark .prose .relative.group pre *::-moz-selection,
+  .dark .prose div[class*="react-syntax-highlighter"]::-moz-selection,
+  .dark .prose div[class*="react-syntax-highlighter"] *::-moz-selection {
+    background: #58a6ff !important;
+    color: #0d1117 !important;
+  }
+
+  /* Global fallback for any remaining code block text */
+  pre::selection, pre *::selection, code::selection, code *::selection {
+    background: #0969da !important;
+    color: #ffffff !important;
+  }
+
+  pre::-moz-selection, pre *::-moz-selection, code::-moz-selection, code *::-moz-selection {
+    background: #0969da !important;
+    color: #ffffff !important;
+  }
+
+  .dark pre::selection, .dark pre *::selection, .dark code::selection, .dark code *::selection {
+    background: #58a6ff !important;
+    color: #0d1117 !important;
+  }
+
+  .dark pre::-moz-selection, .dark pre *::-moz-selection, .dark code::-moz-selection, .dark code *::-moz-selection {
+    background: #58a6ff !important;
+    color: #0d1117 !important;
+  }
+
+  /* Shiki specific styles */
+  .shiki-container pre {
+    background: transparent !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  .shiki-container code {
+    background: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+  }
+
+  /* Shiki selection colors */
+  .shiki-container ::selection, .shiki-container *::selection {
+    background: #0969da !important;
+    color: #ffffff !important;
+  }
+
+  .shiki-container ::-moz-selection, .shiki-container *::-moz-selection {
+    background: #0969da !important;
+    color: #ffffff !important;
+  }
+
+  .dark .shiki-container ::selection, .dark .shiki-container *::selection {
+    background: #58a6ff !important;
+    color: #0d1117 !important;
+  }
+
+  .dark .shiki-container ::-moz-selection, .dark .shiki-container *::-moz-selection {
+    background: #58a6ff !important;
+    color: #0d1117 !important;
   }
   
   .prose blockquote {

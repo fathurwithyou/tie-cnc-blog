@@ -3,7 +3,9 @@
     "allow": [
       "Bash(pnpm add:*)",
       "Bash(pnpm install:*)",
-      "Bash(y)"
+      "Bash(y)",
+      "Bash(rm:*)",
+      "Bash(npm install:*)"
     ],
     "deny": []
   }

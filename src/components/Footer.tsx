@@ -62,7 +62,7 @@ export function Footer() {
               </span>
             </a>
             <p className="text-muted-foreground leading-relaxed text-sm max-w-xs">
-              Professional insights on web development, technology, and software engineering.
+              #KolaborasiInovasi
             </p>
           </div>
 

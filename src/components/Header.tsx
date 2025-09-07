@@ -25,6 +25,15 @@ export function Header({ currentPath = '/' }: HeaderProps) {
     { href: '/about', label: 'About' },
   ];
 
+  const pathname = (currentPath && currentPath.length > 0)
+    ? currentPath
+    : (typeof window !== 'undefined' ? window.location.pathname : '/');
+
+  const isActive = (href: string) => {
+    if (href === '/') return pathname === '/';
+    return pathname === href || pathname.startsWith(href + '/');
+  };
+
   return (
     <>
       <header 
@@ -54,7 +63,7 @@ export function Header({ currentPath = '/' }: HeaderProps) {
               <a
                 key={item.href}
                 href={item.href}
-                className={`nav-link ${currentPath === item.href ? 'active' : ''}`}
+                className={`nav-link ${isActive(item.href) ? 'active' : ''}`}
               >
                 {item.label}
               </a>
@@ -87,7 +96,7 @@ export function Header({ currentPath = '/' }: HeaderProps) {
                     href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
                     className={`py-2 text-sm ${
-                      currentPath === item.href
+                      isActive(item.href)
                         ? 'text-foreground font-medium'
                         : 'text-muted-foreground hover:text-foreground'
                     } transition-colors duration-150`}

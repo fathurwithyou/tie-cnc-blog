@@ -1,5 +1,7 @@
 import { Header } from "@/components/Header";
 import { useYaml } from '@/hooks/useYaml';
+import React from 'react';
+import { Button } from "@/components/ui/button";
 
 interface FameItem {
   year?: string;
@@ -47,6 +49,12 @@ const HallOfFamePage = () => {
   const { data, loading, error } = useYaml<FameItem>("/content/hall-of-fame.yaml");
   const raw = Array.isArray(data) ? data : [];
   const list = raw.filter(isFameEntry);
+  const [selectedField, setSelectedField] = React.useState<string>('All');
+  const fields = React.useMemo(() => {
+    const vals = Array.from(new Set(list.map((i) => (i.field ?? '').toString().trim()).filter(Boolean)));
+    return ['All', ...vals];
+  }, [list]);
+  const filtered = selectedField === 'All' ? list : list.filter((i) => (i.field ?? '').toString().trim() === selectedField);
 
   return (
     <div className="min-h-screen bg-background">
@@ -59,6 +67,15 @@ const HallOfFamePage = () => {
             <p className="text-xl text-muted-foreground leading-relaxed max-w-3xl mx-auto">
               A curated collection of our most impactful achievements, breakthrough innovations, and recognized excellence across diverse fields.
             </p>
+          </div>
+
+          {/* Filter controls */}
+          <div className="mb-8 flex flex-wrap gap-2 justify-center">
+            {fields.map((f) => (
+              <Button key={f} size="sm" variant={selectedField === f ? 'default' : 'outline'} onClick={() => setSelectedField(f)}>
+                {f}
+              </Button>
+            ))}
           </div>
 
           <div className="space-y-16">
@@ -88,7 +105,7 @@ const HallOfFamePage = () => {
               </div>
             )}
             
-            {list.length === 0 && !loading && !error && (
+            {filtered.length === 0 && !loading && !error && (
               <div className="text-center py-16">
                 <div className="max-w-md mx-auto">
                   <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-muted/50 flex items-center justify-center">
@@ -101,7 +118,7 @@ const HallOfFamePage = () => {
               </div>
             )}
             
-            {list.map((item, idx) => { 
+            {filtered.map((item, idx) => { 
               const heading = (item.title ?? item.competition ?? '').toString().trim() || 'Achievement';
               const field = (item.field ?? '').toString().trim() || undefined;
               const year = (item.year ?? '').toString().trim() || undefined;
@@ -186,4 +203,3 @@ const HallOfFamePage = () => {
 };
 
 export default HallOfFamePage;
-

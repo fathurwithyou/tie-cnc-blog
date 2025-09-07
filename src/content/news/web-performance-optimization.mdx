@@ -1,0 +1,285 @@
+# Web Performance Optimization Guide
+
+Web performance is crucial for user experience and business success. This comprehensive guide covers modern techniques and tools for optimizing web application performance.
+
+## Core Web Vitals
+
+Google's Core Web Vitals are essential metrics for measuring user experience:
+
+### Largest Contentful Paint (LCP)
+- **Target**: < 2.5 seconds
+- **Optimization**: Optimize images, use CDN, preload critical resources
+
+### First Input Delay (FID)
+- **Target**: < 100 milliseconds  
+- **Optimization**: Minimize JavaScript, use web workers, optimize event handlers
+
+### Cumulative Layout Shift (CLS)
+- **Target**: < 0.1
+- **Optimization**: Set image dimensions, avoid injecting content, use CSS transforms
+
+## Image Optimization
+
+Modern image optimization techniques:
+
+```html
+<!-- Modern image formats with fallbacks -->
+<picture>
+  <source srcset="image.avif" type="image/avif">
+  <source srcset="image.webp" type="image/webp">
+  <img src="image.jpg" alt="Description" loading="lazy" />
+</picture>
+
+<!-- Responsive images -->
+<img
+  srcset="small.jpg 480w, medium.jpg 768w, large.jpg 1200w"
+  sizes="(max-width: 480px) 100vw, (max-width: 768px) 50vw, 33vw"
+  src="medium.jpg"
+  alt="Responsive image"
+/>
+```
+
+## JavaScript Optimization
+
+### Code Splitting
+
+```javascript
+// Dynamic imports for code splitting
+const LazyComponent = lazy(() => import('./LazyComponent'));
+
+function App() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LazyComponent />
+    </Suspense>
+  );
+}
+
+// Route-based splitting
+const routes = [
+  {
+    path: '/dashboard',
+    component: lazy(() => import('./Dashboard'))
+  },
+  {
+    path: '/profile',
+    component: lazy(() => import('./Profile'))
+  }
+];
+```
+
+### Bundle Analysis
+
+```bash
+# Analyze bundle size
+npm install -g webpack-bundle-analyzer
+npx webpack-bundle-analyzer build/static/js/*.js
+
+# Vite bundle analyzer
+npm install --save-dev rollup-plugin-visualizer
+```
+
+## Critical Resource Loading
+
+### Preloading Critical Resources
+
+```html
+<!-- Preload critical CSS -->
+<link rel="preload" href="/critical.css" as="style">
+
+<!-- Preload critical fonts -->
+<link rel="preload" href="/font.woff2" as="font" type="font/woff2" crossorigin>
+
+<!-- Preload hero images -->
+<link rel="preload" href="/hero-image.jpg" as="image">
+```
+
+### Service Workers for Caching
+
+```javascript
+// sw.js
+const CACHE_NAME = 'app-v1';
+const urlsToCache = [
+  '/',
+  '/static/css/main.css',
+  '/static/js/main.js'
+];
+
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then((cache) => cache.addAll(urlsToCache))
+  );
+});
+
+self.addEventListener('fetch', (event) => {
+  event.respondWith(
+    caches.match(event.request)
+      .then((response) => {
+        return response || fetch(event.request);
+      })
+  );
+});
+```
+
+## CSS Optimization
+
+### Critical CSS Extraction
+
+```javascript
+// Using critical package
+const critical = require('critical');
+
+critical.generate({
+  inline: true,
+  base: 'dist/',
+  src: 'index.html',
+  dest: 'index-critical.html',
+  width: 1300,
+  height: 900
+});
+```
+
+### CSS-in-JS Optimization
+
+```javascript
+// Styled-components with babel plugin
+// .babelrc
+{
+  "plugins": [
+    [
+      "babel-plugin-styled-components",
+      {
+        "ssr": true,
+        "minify": true,
+        "transpileTemplateLiterals": true,
+        "pure": true
+      }
+    ]
+  ]
+}
+```
+
+## Database and API Optimization
+
+### Query Optimization
+
+```javascript
+// GraphQL query optimization
+const GET_USER = gql`
+  query GetUser($id: ID!) {
+    user(id: $id) {
+      id
+      name
+      email
+      # Only fetch needed fields
+      posts(first: 5) {
+        id
+        title
+        publishedAt
+      }
+    }
+  }
+`;
+
+// REST API with proper caching
+fetch('/api/users', {
+  headers: {
+    'Cache-Control': 'max-age=3600'
+  }
+});
+```
+
+### Database Query Optimization
+
+```sql
+-- Add indexes for frequently queried columns
+CREATE INDEX idx_user_email ON users(email);
+CREATE INDEX idx_post_published ON posts(published_at, status);
+
+-- Use EXPLAIN to analyze query performance
+EXPLAIN ANALYZE SELECT * FROM posts 
+WHERE published_at > '2024-01-01' 
+ORDER BY published_at DESC 
+LIMIT 10;
+```
+
+## Monitoring and Metrics
+
+### Performance Monitoring
+
+```javascript
+// Web Vitals measurement
+import { getCLS, getFID, getFCP, getLCP, getTTFB } from 'web-vitals';
+
+getCLS(console.log);
+getFID(console.log);
+getFCP(console.log);
+getLCP(console.log);
+getTTFB(console.log);
+
+// Custom performance marks
+performance.mark('component-start');
+// ... component rendering
+performance.mark('component-end');
+performance.measure('component-render', 'component-start', 'component-end');
+```
+
+### Real User Monitoring (RUM)
+
+```javascript
+// Send performance data to analytics
+function sendToAnalytics({name, delta, value, id}) {
+  gtag('event', name, {
+    event_category: 'Web Vitals',
+    event_label: id,
+    value: Math.round(name === 'CLS' ? delta * 1000 : delta),
+    non_interaction: true,
+  });
+}
+
+getCLS(sendToAnalytics);
+getFID(sendToAnalytics);
+getLCP(sendToAnalytics);
+```
+
+## Performance Budget
+
+Set and enforce performance budgets:
+
+```json
+// webpack-bundle-analyzer configuration
+{
+  "performance": {
+    "maxAssetSize": 250000,
+    "maxEntrypointSize": 250000,
+    "hints": "error"
+  }
+}
+
+// Lighthouse CI configuration
+{
+  "ci": {
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", {"minScore": 0.9}],
+        "categories:accessibility": ["error", {"minScore": 0.9}]
+      }
+    }
+  }
+}
+```
+
+## Tools and Testing
+
+Essential performance tools:
+
+1. **Chrome DevTools** - Performance profiling
+2. **Lighthouse** - Automated auditing
+3. **WebPageTest** - Real-world testing
+4. **GTmetrix** - Performance analysis
+5. **Pingdom** - Monitoring
+
+## Conclusion
+
+Web performance optimization is an ongoing process that requires constant monitoring and improvement. By implementing these techniques and maintaining performance budgets, you can ensure fast, responsive web applications that provide excellent user experiences.
