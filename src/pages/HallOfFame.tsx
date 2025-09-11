@@ -134,7 +134,7 @@ const HallOfFamePage = () => {
                       <img
                         src={img}
                         alt={`${heading}${year ? ` (${year})` : ''}`}
-                        className="h-full w-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                        className="h-full w-full object-cover transition-all duration-500"
                         onError={(e) => {
                           const t = e.currentTarget as HTMLImageElement;
                           if (!t.src.endsWith('/placeholder.svg')) t.src = '/placeholder.svg';
