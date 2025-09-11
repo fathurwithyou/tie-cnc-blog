@@ -1,7 +1,7 @@
-- title: Getting Started with Modern Web Development
-  href: /blog/modern-web-development
-  summary: Explore the latest trends, tools, and best practices in modern web development...
-  readTime: 5 min read
+- title: Data Science Competition 101
+  href: /blog/ds-comp
+  summary: Beginner friendly guide untuk pemula yang ingin mengikuti kompetisi data science
+  readTime: 12 min read
 - title: TypeScript Best Practices
   href: /blog/typescript-practices
   summary: Learn how to write better TypeScript code with these proven patterns and techniques...
