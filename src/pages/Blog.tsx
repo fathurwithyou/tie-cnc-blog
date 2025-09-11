@@ -5,31 +5,22 @@ import { Button } from "@/components/ui/button";
 const Blog = () => {
   const blogPosts = [
     {
-      title: "Getting Started with Modern Web Development",
-      summary: "Modern web development has evolved dramatically over the past few years. In this comprehensive guide, we'll explore the latest trends, tools, and best practices that every developer should know.",
-      date: "2024-03-15",
+      title: "What's Data Science?",
+      summary: "Data Science itu luas dan banyak yang bingung mau mulai masuk dari mana. Artikel ini dibuat dengan harapan untuk menjawab kebingungan itu.",
+      date: "2025-01-01",
       readTime: "8 min",
-      category: "Web Development",
-      author: "Sarah Chen",
-      slug: "modern-web-development"
+      category: "Data Science",
+      author: "Ardysatrio Fakhri Haroen (IF'17)",
+      slug: "ds-101"
     },
     {
-      title: "TypeScript Best Practices for Large Projects", 
-      summary: "Learn how to structure and organize TypeScript code in large projects. We'll cover type definitions, project organization, and advanced patterns that scale.",
-      date: "2024-03-10",
+      title: "Data Science Competition 101", 
+      summary: "Beginner friendly guide untuk pemula yang ingin mengikuti kompetisi data science.",
+      date: "2021-09-12",
       readTime: "12 min",
-      category: "TypeScript",
-      author: "Alex Rodriguez",
-      slug: "typescript-best-practices"
-    },
-    {
-      title: "Building Scalable React Applications",
-      summary: "Discover architectural patterns and tools for building large-scale React applications. From state management to component organization, learn what works in production.",
-      date: "2024-03-05", 
-      readTime: "15 min",
-      category: "React",
-      author: "Michael Park",
-      slug: "scalable-react-applications"
+      category: "Data Science",
+      author: "Dionisius Darryl Hermansyah (IF'19)",
+      slug: "ds-comp"
     }
   ];
 

@@ -87,7 +87,7 @@ export function HallOfFame({ limit = 3, showSeeAllLink = true, showFilter = true
                   <img
                     src={img}
                     alt={`${heading}${year ? ` (${year})` : ''}`}
-                    className="h-full w-full object-cover grayscale"
+                    className="h-full w-full object-cover"
                     onError={(e) => {
                       const t = e.currentTarget as HTMLImageElement;
                       if (!t.src.endsWith('/placeholder.svg')) t.src = '/placeholder.svg';

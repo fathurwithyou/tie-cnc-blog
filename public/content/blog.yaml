@@ -1,20 +1,20 @@
-- title: Getting Started with Modern Web Development
-  slug: modern-web-development
-  date: 2024-03-15
+- title: What's Data Science?
+  slug: ds-101
+  date: 2025-01-01
   readTime: 8 min read
-  summary: Modern web development has evolved dramatically over the past few years.
-  topic: Web Development
-  href: /blog/modern-web-development
-  mdx: sample-post.mdx
+  summary: Data Science itu luas dan banyak yang bingung mau mulai masuk dari mana. Artikel ini dibuat dengan harapan untuk menjawab kebingungan itu.
+  topic: Data Science
+  href: /blog/ds-101
+  mdx: ds-101.mdx
 
-- title: TypeScript Best Practices for Large Projects
-  slug: typescript-practices
-  date: 2024-03-10
+- title: Data Science Competition 101
+  slug: ds-comp
+  date: 2021-09-12
   readTime: 12 min read
-  summary: Learn how to structure and organize TypeScript code in large projects.
+  summary: Beginner friendly guide untuk pemula yang ingin mengikuti kompetisi data science
   topic: TypeScript
-  href: /blog/typescript-practices
-  mdx: sample-post.mdx
+  href: /blog/ds-comp
+  mdx: ds-comp.mdx
 
 - title: Building Scalable React Applications
   slug: scalable-react
