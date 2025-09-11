@@ -13,7 +13,7 @@ type BlogItem = {
   mdx?: string; // filename under src/content/
 };
 
-const modules = import.meta.glob("/src/content/*.mdx");
+const modules = import.meta.glob("/src/content/blog/*.mdx");
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -23,7 +23,7 @@ const BlogPost = () => {
   const post = items.find((i) => i.slug === slug);
 
   const mdxFile = post?.mdx || "sample-post.mdx";
-  const path = `/src/content/${mdxFile}`;
+  const path = `/src/content/blog/${mdxFile}`;
   const Loader = modules[path] as unknown as () => Promise<{ default: React.ComponentType<any> }>;
 
   const MDXComponent = React.lazy(Loader ?? modules["/src/content/sample-post.mdx"] as any);
