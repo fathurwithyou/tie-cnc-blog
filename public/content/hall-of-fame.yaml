@@ -103,7 +103,14 @@
     - Derick Amadeus Budiono (IF'23)
     - Michael Alexander Angkawijaya (IF'23)
     - Albertus Christian Poandy (IF'23)
-  image: /images/hall-of-fame/ds-11.png
+  image: /images/hall-of-fame/ds-11.jpg
+- year: "2025"
+  title: 1st Winner Data Quest Challenge by Data Science Indonesia
+  field: Data Science
+  description: Support Smarter Marketing - Classify Customers Likely to Purchase Term Deposits Using Ensemble Learning
+  members:
+    - Mudzaki Kaarzaqiel Hakim (STI'23)
+  image: /images/hall-of-fame/ds-12.jpg
 - year: "2025"
   title: 1st Winner SSDS Sebelas Maret Fair 2025
   field: Data Science
@@ -112,4 +119,4 @@
     - Razi Rachman Widyadhana (IF'23)
     - Izhar Alif Akbar (STI'23)
     - Farrel Athalla Putra (IF'23)
-  image: /images/hall-of-fame/ds-12.jpg
+  image: /images/hall-of-fame/ds-13.jpg
