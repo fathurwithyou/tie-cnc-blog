@@ -1,33 +1,115 @@
-- year: "2022"
-  title: Best Open Source Contribution
-  field: Competitive Programming
-  description: Recognized for consistent, high-quality contributions to community tooling across multiple repositories.
-  members:
-    - Alex Johnson
-    - Priya Singh
-  image: /fame/open-source-2022.jpg
-- year: "2023"
-  title: Top Performance Case Study
+- year: "2021"
+  title: 1st Winner Datathon Artificial Intelligence Innovation Summit (AIIS) 2021
   field: Data Science
-  description: Achieved sub-100ms load times for a large-scale React app through careful code-splitting and caching strategies.
+  description: Peramalan Deret Waktu Vaksinasi Masyarakat Indonesia dengan Model ARIMAX
   members:
-    - Marco Rossi
-    - Hana Kim
-    - Alex Johnson
-  image: /fame/perf-2023.jpg
+    - Dimas Shidqi Parikesit (IF'20)
+    - Rio Audino (IF'20)
+    - Rizky Ramadhana (IF'20)
+  image: /images/hall-of-fame/ds-0.jpg
+- year: "2022"
+  title: Gold Medal Data Mining Gemastik XV 2022
+  field: Data Science
+  description: Model Perkiraan Harga Bahan Pangan Berbasis Trend Pencarian Kata Kunci di Google dengan Model ARIMAX dan Granger Causality Test
+  members:
+    - M. Risqi Firdaus (IF'20)
+    - Vito Ghifari (IF'20)
+    - Hanif M. Zahran (IF'21)
+  image: /images/hall-of-fame/ds-1.png
+- year: "2022"
+  title: Honorable Mention Data Mining Gemastik XV 2022
+  field: Data Science
+  description: Sistem Pendeteksi Wabah Penyakit dengan Tren Hasil Pencarian Bidang Kesehatan dari Google Trend
+  members:
+    - Dimas Shidqi Parikesit (IF'20)
+    - Rio Alexander Audino (IF'20)
+    - Rizky Ramadhana P. K. (IF'20)
+  image: /images/hall-of-fame/ds-2.jpg
+- year: "2023"
+  title: Gold Medal Data Mining Gemastik XVI 2023
+  field: Data Science
+  description: Peningkatan Keamanan Sistem IoT melalui Deteksi Anomali dengan Few-shot Learning Autoencoder dari Data Penyerangan Aplikasi Terkontainerisasi
+  members:
+    - Maria Khelli (IF'20)
+    - Malik Akbar Hashemi Rafsanjani (IF'20)
+    - Maharani Ayu Putri Irawan (IF'20)
+  image: /images/hall-of-fame/ds-3.jpg
+- year: "2023"
+  title: Bronze Medal Data Mining Gemastik XVI 2023
+  field: Data Science
+  description: Revitalisasi Kota Metropolitan Indonesia - Memperbaiki Kualitas Udara dengan Optimalisasi Distribusi Energi untuk Keberlanjutan
+  members:
+    - Enrique Alifio Ditya (IF'20)
+    - Michael Jonathan Halim (IF'20)
+    - Rava Maulana Azzikri (IF'20)
+  image: /images/hall-of-fame/ds-4.jpg
+- year: "2023"
+  title: Finalist Data Mining Gemastik XVI 2023
+  field: Data Science
+  description: Monitoring Otomatis Kondisi Lalu Lintas untuk Mendeteksi Adanya Kecelakaan dengan Menggunakan YOLOv8
+  members:
+    - Mohamad Maulana Firdaus Ramadhan (STI'22)
+    - Rizqika Mulia Pratama (IF'22)
+    - Ikhwan Al Hakim (IF'22)
+  image: /images/hall-of-fame/ds-5.jpg
+- year: "2023"
+  title: 3rd Winner Data Slayer 1.0 Telkom Purwokerto
+  field: Data Science
+  description: Regresi Angka CO2
+  members:
+    - M. Fathur Rizky (IF'23)
+    - Guntara Hambali (IF'23)
+  image: /images/hall-of-fame/ds-6.png
 - year: "2024"
-  title: DX Excellence Award
-  field: Business Case
-  description: Introduced developer workflows that improved iteration speed by 10x with robust tooling and CI enhancements.
+  title: 1st Winner Hology 7.0 Universitas Brawijaya
+  field: Data Science
+  description: Optimasi Pengalaman Pengguna dan Penjual di Marketplace TokoGenZ
   members:
-    - Priya Singh
-    - Hana Kim
-  image: /fame/dx-2024.jpg
+    - Mohamad Maulana Firdaus Ramadhan (STI'22)
+    - Anindita Widya Santoso (STI'22)
+  image: /images/hall-of-fame/ds-7.jpeg
 - year: "2024"
-  title: DX Excellence Award
-  field: Business Case
-  description: Introduced developer workflows that improved iteration speed by 10x with robust tooling and CI enhancements.
+  title: 1st Winner Data Analytics Dash Compfest 16 Universitas Indonesia
+  field: Data Science
+  description: Analisis Ketidaklanjutan Pendidikan ke Perguruan Tinggi di Indonesia
   members:
-    - Priya Singh
-    - Hana Kim
-  image: /fame/dx-2024.jpg
+    - Tamara Mayranda Lubis (STI'22)
+    - Yovanka Sandrina Maharaja (STI'22)
+    - Shazya Audrea Taufik (IF'22)
+  image: /images/hall-of-fame/ds-8.png
+- year: "2024"
+  title: Honorable Mention Data Analytics Dash Compfest 16 Universitas Indonesia
+  field: Data Science
+  description: Pengaruh Media Sosial Terhadap Pendidikan di Indonesia
+  members:
+    - M. Fathur Rizky (IF'23)
+    - Guntara Hambali (IF'23)
+    - Adhimas Aryo Bimo (IF'23)
+  image: /images/hall-of-fame/ds-9.png
+- year: "2025"
+  title: 1st Winner Data Analyst Competition FindIT 2025 Universitas Gadjah Mada
+  field: Data Science
+  description: Help Protect Children Online - Develop a Model to Identify Apps Potentially Violating COPPA
+  members:
+    - Rizqika Mulia Pratama (IF'22)
+    - Mohammad Akmal Ramadhan (IF'22)
+    - Yasmin Farisah Salma (IF'22)
+  image: /images/hall-of-fame/ds-10.jpeg
+- year: "2025"
+  title: 3rd Winner Data Analyst Competition FindIT 2025 Universitas Gadjah Mada
+  field: Data Science
+  description: Help Protect Children Online - Develop a Model to Identify Apps Potentially Violating COPPA
+  members:
+    - Derick Amadeus Budiono (IF'23)
+    - Michael Alexander Angkawijaya (IF'23)
+    - Albertus Christian Poandy (IF'23)
+  image: /images/hall-of-fame/ds-11.png
+- year: "2025"
+  title: 1st Winner SSDS Sebelas Maret Fair 2025
+  field: Data Science
+  description: Gambar dan Deret Waktu - Integrasi Optical Character Recognition dalam Peramalan Curah Hujan di Singapura
+  members:
+    - Razi Rachman Widyadhana (IF'23)
+    - Izhar Alif Akbar (STI'23)
+    - Farrel Athalla Putra (IF'23)
+  image: /images/hall-of-fame/ds-12.jpg
