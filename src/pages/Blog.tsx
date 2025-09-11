@@ -7,7 +7,7 @@ const Blog = () => {
     {
       title: "What's Data Science?",
       summary: "Data Science itu luas dan banyak yang bingung mau mulai masuk dari mana. Artikel ini dibuat dengan harapan untuk menjawab kebingungan itu.",
-      date: "2024-03-15",
+      date: "2025-01-01",
       readTime: "8 min",
       category: "Data Science",
       author: "Ardysatrio Fakhri Haroen (IF'17)",
@@ -21,15 +21,6 @@ const Blog = () => {
       category: "Data Science",
       author: "Dionisius Darryl Hermansyah (IF'19)",
       slug: "ds-comp"
-    },
-    {
-      title: "Building Scalable React Applications",
-      summary: "Discover architectural patterns and tools for building large-scale React applications. From state management to component organization, learn what works in production.",
-      date: "2024-03-05", 
-      readTime: "15 min",
-      category: "React",
-      author: "Michael Park",
-      slug: "scalable-react-applications"
     }
   ];
 
