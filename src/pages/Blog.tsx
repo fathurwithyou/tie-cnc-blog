@@ -21,6 +21,14 @@ const Blog = () => {
       category: "Data Science",
       author: "Dionisius Darryl Hermansyah (IF'19)",
       slug: "ds-comp"
+    },
+    {
+      title: "Apa Itu Business Case Competition?",
+      summary: "Panduan lengkap untuk yang ingin memulai Business Case Competition (BCC), dari definisi, jenis kompetisi, hingga manfaatnya untuk karier.",
+      date: "2025-09-11",
+      readTime: "7 min",
+      category: "Business Case",
+      slug: "intro_bcc"
     }
   ];
 
