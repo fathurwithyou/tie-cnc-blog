@@ -1,0 +1,217 @@
+# Register and Stack
+
+Understanding CPU registers and stack memory layout is fundamental for binary exploitation in CTF competitions. This guide covers the essential concepts you need to know before diving into buffer overflows, return-oriented programming (ROP), and other binary exploitation techniques.
+
+## CPU Registers
+
+Registers are small, fast storage locations directly accessible by the CPU. In x86-64 architecture, there are several types of registers:
+
+### General Purpose Registers (x86-64)
+
+- **RAX**: Accumulator register, often used for return values
+- **RBX**: Base register, general purpose
+- **RCX**: Counter register, often used for loop counters
+- **RDX**: Data register, general purpose
+- **RSI**: Source index, used in string operations
+- **RDI**: Destination index, used in string operations
+- **RBP**: Base pointer, points to the base of the current stack frame
+- **RSP**: Stack pointer, points to the top of the stack
+- **R8-R15**: Additional general purpose registers (x86-64 only)
+
+### Special Purpose Registers
+
+- **RIP**: Instruction pointer, points to the next instruction to execute
+- **EFLAGS/RFLAGS**: Flags register, contains status flags
+
+### Register Sizes
+
+Registers can be accessed in different sizes:
+
+- **64-bit**: RAX, RBX, RCX, RDX, RSI, RDI, RBP, RSP
+- **32-bit**: EAX, EBX, ECX, EDX, ESI, EDI, EBP, ESP
+- **16-bit**: AX, BX, CX, DX, SI, DI, BP, SP
+- **8-bit**: AL/AH, BL/BH, CL/CH, DL/DH
+
+## The Stack
+
+The stack is a region of memory that grows downward (from higher addresses to lower addresses) and follows the Last-In-First-Out (LIFO) principle.
+
+### Stack Operations
+
+- **PUSH**: Adds data to the top of the stack, decrements RSP
+- **POP**: Removes data from the top of the stack, increments RSP
+
+### Stack Frame Structure
+
+When a function is called, a new stack frame is created:
+
+```
+Higher Memory Addresses
+┌─────────────────────┐
+│   Previous Frame    │
+├─────────────────────┤
+│  Return Address     │ ← Saved RIP
+├─────────────────────┤
+│  Saved RBP         │ ← RBP points here
+├─────────────────────┤
+│  Local Variables    │
+├─────────────────────┤
+│  Function Args      │
+├─────────────────────┤
+│    Buffer Space     │ ← RSP points here
+└─────────────────────┘
+Lower Memory Addresses
+```
+
+### Key Stack Components
+
+1. **Return Address**: Address to return to after function completes
+2. **Saved Base Pointer**: Previous frame's RBP value
+3. **Local Variables**: Function's local variables
+4. **Function Parameters**: Arguments passed to the function
+
+## Function Call Convention
+
+### x86-64 System V ABI (Linux)
+
+Arguments are passed in registers in this order:
+1. **RDI** - First argument
+2. **RSI** - Second argument
+3. **RDX** - Third argument
+4. **RCX** - Fourth argument
+5. **R8** - Fifth argument
+6. **R9** - Sixth argument
+7. **Stack** - Additional arguments
+
+Return value is stored in **RAX**.
+
+### Function Prologue and Epilogue
+
+**Prologue** (function entry):
+```assembly
+push rbp        ; Save old base pointer
+mov rbp, rsp    ; Set new base pointer
+sub rsp, N      ; Allocate space for local variables
+```
+
+**Epilogue** (function exit):
+```assembly
+mov rsp, rbp    ; Restore stack pointer
+pop rbp         ; Restore old base pointer
+ret             ; Return to caller
+```
+
+## Stack-Based Buffer Overflow
+
+Understanding the stack layout is crucial for buffer overflow attacks:
+
+### Vulnerable Code Example
+
+```c
+void vulnerable_function(char *input) {
+    char buffer[64];        // 64-byte buffer
+    strcpy(buffer, input);  // No bounds checking!
+}
+```
+
+### Memory Layout During Overflow
+
+```
+┌─────────────────────┐
+│  Return Address     │ ← Can be overwritten
+├─────────────────────┤
+│  Saved RBP         │ ← Can be overwritten
+├─────────────────────┤
+│  buffer[64]        │ ← Vulnerable buffer
+│  buffer[63]        │
+│       ...           │
+│  buffer[0]         │ ← Input starts here
+└─────────────────────┘
+```
+
+### Exploitation Strategy
+
+1. **Find offset**: Determine how many bytes to write before overwriting return address
+2. **Control RIP**: Overwrite return address with desired value
+3. **Execute payload**: Redirect execution to shellcode or ROP chain
+
+## Debugging with GDB
+
+Essential GDB commands for examining registers and stack:
+
+### Register Commands
+```bash
+info registers          # Show all registers
+info registers rax      # Show specific register
+print $rax              # Print register value
+set $rax = 0x1337      # Set register value
+```
+
+### Stack Commands
+```bash
+x/20xg $rsp            # Examine 20 64-bit values from stack pointer
+x/20xw $rbp            # Examine 20 32-bit values from base pointer
+info frame             # Show current stack frame info
+backtrace              # Show call stack
+```
+
+### Memory Examination
+```bash
+x/s $rdi               # Examine string at RDI
+x/i $rip               # Examine instruction at RIP
+disas function_name    # Disassemble function
+```
+
+## Stack Protections
+
+Modern systems implement various stack protections:
+
+### Stack Canaries
+- Random values placed between buffer and return address
+- Program terminates if canary is overwritten
+- Can be bypassed by leaking the canary value
+
+### ASLR (Address Space Layout Randomization)
+- Randomizes memory layout on each execution
+- Makes it harder to predict addresses
+- Can be bypassed with information leaks
+
+### NX Bit (No Execute)
+- Marks stack as non-executable
+- Prevents direct shellcode execution
+- Bypassed using ROP (Return-Oriented Programming)
+
+## Common Exploitation Techniques
+
+### Buffer Overflow
+1. Overflow buffer to overwrite return address
+2. Redirect execution to controlled location
+3. Execute shellcode or system calls
+
+### Return-Oriented Programming (ROP)
+1. Chain together existing code snippets ("gadgets")
+2. Each gadget ends with a `ret` instruction
+3. Build complex operations without injecting code
+
+### Format String Attacks
+1. Exploit format string functions (`printf`, `sprintf`)
+2. Read from or write to arbitrary memory locations
+3. Can leak addresses or overwrite function pointers
+
+## Practical Tips
+
+1. **Use pattern generation**: Tools like `pwn cyclic` help find offsets
+2. **Examine core dumps**: Understand crash locations and register states
+3. **Check protections**: Use `checksec` to identify enabled mitigations
+4. **Practice with CTF platforms**: PicoCTF, OverTheWire, etc.
+5. **Study assembly**: Understanding x86-64 assembly is crucial
+
+## Tools and Resources
+
+- **GDB with enhancements**: pwndbg, GEF, or PEDA
+- **pwntools**: Python library for exploit development
+- **ROPgadget**: Tool for finding ROP gadgets
+- **checksec**: Script to check binary protections
+- **Ghidra/IDA**: Reverse engineering tools
+
+Understanding registers and stack layout forms the foundation for all binary exploitation techniques. Master these concepts before moving on to advanced exploitation methods.
