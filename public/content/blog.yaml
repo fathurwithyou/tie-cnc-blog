@@ -5,7 +5,7 @@
   topic: Data Science
   href: /blog/ds-101
   mdx: ds-101.mdx
-
+  
 - title: Data Science Competition 101
   slug: ds-comp
   date: 2021-09-12
@@ -13,7 +13,7 @@
   topic: TypeScript
   href: /blog/ds-comp
   mdx: ds-comp.mdx
-
+  
 - title: Apa Itu Business Case Competition? 
   slug: intro_bcc
   date: 2025-09-11
@@ -21,6 +21,51 @@
   topic: Business Case
   href: /blog/intro_bcc
   mdx: intro_bcc.mdx
+  
+- title: Guide to Capture The Flag 
+  slug: ctf-guide
+  date: 2021-02-25
+  readTime: 8 min read
+  summary: Beginner guide untuk pemula yang ingin mengikuti kompetisi capture the flag.
+  topic: Capture The Flag
+  href: /blog/ctf-guide
+  mdx: ctf-guide.mdx
+
+- title: Register and Stack
+  slug: ctf-registerandstack
+  date: 2021-02-25
+  readTime: 10 min read
+  summary: Perkenalan kepada Register dan Stack.
+  topic: Capture The Flag
+  href: /blog/ctf-registerandstack
+  mdx: ctf-registerandstack.mdx
+
+- title: Binary Exploitation
+  slug: ctf-binaryexploitation
+  date: 2021-02-25
+  readTime: 15 min read
+  summary: Perkenalan kepada Binary Exploitation.
+  topic: Capture The Flag
+  href: /blog/ctf-binaryexploitation
+  mdx: ctf-binaryexploitation.mdx
+
+- title: Classic Cryptography
+  slug: ctf-classiccryptography
+  date: 2021-02-25
+  readTime: 15 min read
+  summary: Perkenalan kepada Classic Cryptography.
+  topic: Capture The Flag
+  href: /blog/ctf-classiccryptography
+  mdx: ctf-classiccryptography.mdx
+
+- title: Building Scalable React Applications
+  slug: scalable-react
+  date: 2024-03-05
+  readTime: 15 min read
+  summary: Architectural patterns and tools for building large-scale React applications.
+  topic: React
+  href: /blog/scalable-react
+  mdx: sample-post.mdx
 
 - title: Anti Salah Sasaran, Cara Membedah Masalah Business Case Biar Solusimu Tepat Guna
   slug: problem_bcc
