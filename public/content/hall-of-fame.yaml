@@ -120,7 +120,203 @@
     - Izhar Alif Akbar (STI'23)
     - Farrel Athalla Putra (IF'23)
   image: /images/hall-of-fame/ds-13.jpg
-
+- year: "2024"
+  title: Silver Medalist ICPC Regional 2024
+  field: Competitive Programming
+  members:
+    - Ahmad Romy Zahran (IF'20)
+    - Michael Utama (IF'21)
+    - Muhammad Habibi Husni (IF'21)
+  image: /images/hall-of-fame/cp-13.png
+- year: "2018"
+  title: 41st ACM-ICPC World Finals 2018
+  field: Competitive Programming
+  members:
+    - Alfonsus Raditya Arsadjaja
+    - Luqman Arifin Siswanto
+    - Wiwit Rifai
+  image: /images/hall-of-fame/cp-25.png
+- year: "2013"
+  title: 23rd ACM-ICPC World Finals 2013
+  field: Competitive Programming
+  members:
+    - Ahmad Zaky
+    - Christianto Handojo
+    - Irvan Jahja
+  image: /images/hall-of-fame/cp-22.png
+- year: "2012"
+  title: 56th ACM-ICPC World Finals 2012
+  field: Competitive Programming
+  members:
+    - Gregorius Ronny Kaluge
+    - Christianto Handojo
+    - Irvan Jahja
+  image: /images/hall-of-fame/cp-20.png
+- year: "2021"
+  title: Juara 3 Gemastik XIV 2021
+  field: Competitive Programming
+  members:
+    - Jauhar Wibisono (IF'19)
+    - Kinantan Arya Bagaspati (IF'19)
+    - Marcello Faria (IF'19)
+  image: /images/hall-of-fame/cp-10.png
+- year: "2020"
+  title: Juara 1 Gemastik XIII 2020
+  field: Competitive Programming
+  members:
+    - Muhammad Hasan (IF'18)
+    - Farras Mohammad Hibban Faddila (IF'18)
+    - Muhammad Kamal Shafi (IF'18)
+  image: /images/hall-of-fame/cp-1.png
+- year: "2017"
+  title: Juara 2 Gemastik X 2017
+  field: Competitive Programming
+  members:
+    - Wiwit Rifa'i
+    - Luqman Arifin Siswanto
+    - Alfonsus Raditya Arsadjaja
+  image: /images/hall-of-fame/cp-17.png
+- year: "2015"
+  title: Juara 2 Gemastik VIII 2015
+  field: Competitive Programming
+  members:
+    - Kevin Valensius (IF'11)
+    - Ryan Ignatius Hadiwijaya (IF'11) 
+    - James Jaya (IF'11) 
+  image: /images/hall-of-fame/cp-21.png
+- year: "2025"
+  title: Juara 1 Find IT! 2025
+  field: Competitive Programming
+  members:
+    - Farhan Nabil Suryono (IF'21)
+    - Farizki Kurniawan (IF'21) 
+    - Michael Utama (IF'21) 
+  image: /images/hall-of-fame/cp-9.png
+- year: "2023"
+  title: Juara 3 FINDIT! 2023
+  field: Competitive Programming
+  members:
+    - Ahmad Romy Zahran (IF'20)
+    - Firizky Ardiansyah (IF'20) 
+    - Muhammad Fahmi Irfan (IF'20) 
+  image: /images/hall-of-fame/cp-16.png
+- year: "2019"
+  title: Juara 3 FINDIT! 2019
+  field: Competitive Programming
+  members:
+    - Dicky Novanto
+    - Tony
+    - Yonas Adiel
+  image: /images/hall-of-fame/cp-19.png
+- year: "2016"
+  title: Juara 2 SCPC COMPFEST 2016
+  field: Competitive Programming
+  members:
+    - Luqman Arifin Siswanto
+    - Wiwit Rifai
+    - Muhamad Visat Sutarno
+  image: /images/hall-of-fame/cp-4.png
+- year: "2020"
+  title: 2nd Runner Up SCPC COMPFEST 2020
+  field: Competitive Programming
+  members:
+    - Muhammad Hasan (IF'18)
+    - Farras Mohammad Hibban Faddila (IF'18)
+    - Muhammad Kamal Shafi (IF'18)
+  image: /images/hall-of-fame/cp-8.png
+- year: "2024"
+  title: Juara harapan 1 Schematics NPC 2024
+  field: Competitive Programming
+  members:
+    - Farhan Nabil Suryono (IF'21)
+    - Muhammad Habibi Husni (IF'21) 
+    - Michael Utama (IF'21) 
+  image: /images/hall-of-fame/cp-15.png
+- year: "2021"
+  title: Juara 3 Schematics NPC 2021
+  field: Competitive Programming
+  members:
+    - Muhammad Hasan (IF'18)
+    - Farras Mohammad Hibban Faddila (IF'18)
+    - Muhammad Kamal Shafi (IF'18)
+  image: /images/hall-of-fame/cp-6.png
+- year: "2023"
+  title: Juara harapan 2 Schematics NPC 2023
+  field: Competitive Programming
+  members:
+    - Michael Utama (IF'21)
+    - Muhammad Habibi Husni (IF'21)
+    - Brian Kheng (IF'21)
+  image: /images/hall-of-fame/cp-12.png
+- year: "2023"
+  title: Juara 3 Ideafuse 2023
+  field: Competitive Programming
+  members:
+    - Jauhar Wibisono (IF'19)
+    - Kinantan Arya Bagaspati (IF'19)
+    - Farras Mohammad Hibban Faddila (IF'18)
+  image: /images/hall-of-fame/cp-11.png
+- year: "2023"
+  title: Juara Harapan 2 Ideafuse 2023
+  field: Competitive Programming
+  members:
+    - Benedict Presley (IF'23)
+    - Mochammad Fariz Rifqi Rizqulloh (IF'23)
+    - I Gede Arya Raditya Parameswara (IF'20)
+  image: /images/hall-of-fame/cp-2.png
+- year: "2025"
+  title: Juara 3 Recursion 2025
+  field: Competitive Programming
+  members:
+    - Kloce Paul William Saragih (IF'24)
+    - Renaldy Arief Susanto (IF'22)
+    - Nyoman Ganadipa (IF'22)
+  image: /images/hall-of-fame/cp-18.png
+- year: "2021"
+  title: Juara Harapan Recursion 2025
+  field: Competitive Programming
+  members:
+    - Benedict Presley (IF'23)
+    - Mochammad Fariz Rifqi Rizqulloh (IF'23)
+    - Dewana Gustavus Haraka Otang (IF'21)
+  image: /images/hall-of-fame/cp-27.png
+- year: "2021"
+  title: Juara 1 Interfest 2024
+  field: Competitive Programming
+  members:
+    - Benedict Presley (IF'23)
+    - Dewana Gustavus Haraka Otang (IF'21)
+  image: /images/hall-of-fame/cp-26.png
+- year: "2024"
+  title: Juara 2 Interfest 2024
+  field: Competitive Programming
+  members:
+    - Mochammad Fariz Rifqi Rizqulloh (IF'23)
+  image: /images/hall-of-fame/cp-5.png
+- year: "2024"
+  title: Juara 3 Interfest 2024
+  field: Competitive Programming
+  members:
+    - Farhan Nabil Suryono (IF'21)
+    - Farizki Kurniawan (IF'21)
+    - Jonathan Arthurito Aldi Sinaga (IF'21)
+  image: /images/hall-of-fame/cp-3.png
+- year: "2023"
+  title: Juara 2 Tech Enthusiast Day 2023
+  field: Competitive Programming
+  members:
+    - Benedict Presley (IF'23)
+    - Mochammad Fariz Rifqi Rizqulloh (IF'23)
+    - I Gede Arya Raditya Parameswara (IF'20)
+  image: /images/hall-of-fame/cp-23.png
+- year: "2024"
+  title: Juara 3 Hology 7.0 2024
+  field: Competitive Programming
+  members:
+    - Benedict Presley (IF'23)
+    - Mochammad Fariz Rifqi Rizqulloh (IF'23)
+    - Dewana Gustavus Haraka Otang (IF'21)
+  image: /images/hall-of-fame/cp-24.png
 - year: "2025"
   title: 1st Winner EcoVation International Business Case Competition
   field: Business Case

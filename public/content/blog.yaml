@@ -10,7 +10,7 @@
   slug: ds-comp
   date: 2021-09-12
   summary: Beginner friendly guide untuk pemula yang ingin mengikuti kompetisi data science
-  topic: TypeScript
+  topic: Data Science
   href: /blog/ds-comp
   mdx: ds-comp.mdx
   
@@ -57,6 +57,24 @@
   topic: Capture The Flag
   href: /blog/ctf-classiccryptography
   mdx: ctf-classiccryptography.mdx
+
+- title: What's Competitive Programming?
+  slug: cp-intro
+  date: 2025-09-16
+  readTime: 15 min
+  summary: Beginner friendly guide untuk pemula yang ingin mengikuti kompetisi CP dan tips dalam berkompetisi CP.
+  topic: Competitive Programming
+  href: /blog/cp-intro
+  mdx: cp-intro.mdx
+
+- title: Competitive Programming 101
+  slug: cp-101
+  date: 2025-09-16
+  readTime: 15 min
+  summary: Hal-hal dasar yang wajib diketahui dalam dunia Competitive Programming.
+  topic: Competitive Programming
+  href: /blog/cp-101
+  mdx: cp-101.mdx
 
 - title: Building Scalable React Applications
   slug: scalable-react

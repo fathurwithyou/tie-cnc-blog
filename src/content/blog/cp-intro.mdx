@@ -1,0 +1,145 @@
+# **Intro**
+
+## Competitive Programming?
+
+Jadi CP tuh sebenernya ngapain sih bang? Pada intinya, CP adalah "mind sport", di mana peserta menyelesaikan masalah algoritmik dengan menulis kode, biasanya dalam batas waktu tertentu.
+Di lomba CP, kita bakal menghadapi 2 tantangan utama : Algoritm Design dan Implementation. Keduanya harus sama-sama kuat. Algorithm design adalah gimana cara kita membuat algoritma yang memenuhi batasan-batasan dari soal yang diberikan, dan imeplemntation adalah gimana cara kita nulis kode yang sesuai dengan konsep tersebut.
+Bahasa pemrograman yang paling umum dipakai biasanya adalah C/C++ (karena paling cepet). Tapi gak menutup kemungkinan bisa seseorang solve dengan menggunakan bahasa pemrograman lain, kayak Java, Python, Rust, etc.
+
+
+## Format Perlombaan
+Dalam perlombaan Competitive Programming, biasanya terdapat beberapa elemen penting yang menentukan bagaimana lomba berlangsung. Tiap perlombaan biasanya ada perbedaan sedikit, tapi secara umum, format umum yang sering ditemui adalah : 
+- Jumlah Soal : Biasanya lomba CP terdiri dari 5 sampai 13, dengan difficulty yang bervariasi. Perlu diketahui adalah, biasanya di tiap kontes ada 1 soal yang gampang banget, dan ada 1 soal yang near-impossible wkwk
+- Tim : Hampir semua lomba CP untuk kuliah itu punya format lomba tim dengan format 3 orang per tim. Setiap anggota tim biasanya mengerjakan soal secara mandiri tapi bisa berdiskusi selama lomba berlangsung sesuai aturan. Buat pengerjaannya, biasanya ada 2 kemungkinan, setiap orang bisa ngerjain di komputer masing masing, atau 1 komputer selama perlombaan berlangsung.
+- Durasi Pengerjaan : Durasi lomba bervariasi tergantung jenis perlombaan, biasanya antara 2 sampai 5 jam. Babak penyisihan bisa berlangsung selama 3 jam, sedangkan babak final yang lebih intensif bisa sampai 5 jam.
+- Penilaian : Tim akan diurutkan berdasarkan banyak solve, kemudian akan diurutkan berdasarkan jumlah penalty. Pemenangnya adalah tim dengan banyak solve terbanyak dengan jumlah penalty paling sedikit. Suatu submisi akan dinyatakan AC (Accepted) apabila submisi tersebut menjawab seluruh testcase yang diberikan oleh juri dengan benar.
+- ICPC Style vs OI Style : ICPC 
+
+## Contoh Soal 
+Diberikan sebuah array $A$ yang berisi $N$ bilangan bulat. Tentukan berapa banyak pasangan $(i, j)$ dengan $i < j$ yang memiliki selisih mutlak sama dengan nilai $K$, yaitu $|A_i - A_j| = K$.
+
+#### Batasan  
+- $1 \leq N \leq 10^5$  
+- $0 \leq A_i \leq 10^9$  
+- $0 \leq K \leq 10^9$  
+- Waktu eksekusi maksimal 1 detik  
+- Memori maksimal 128 MB  
+
+#### Format Masukan  
+Baris pertama berisi dua integer $N$ dan $K$.  
+Baris kedua berisi $N$ bilangan $A_1, A_2, \ldots, A_N$
+
+#### Format Keluaran  
+Satu baris berisi satu bilangan, yaitu jumlah pasangan yang memenuhi kondisi selisih $K$.
+
+#### Contoh Masukan  
+```
+5 2
+1 5 3 4 2
+```
+
+#### Contoh Keluaran 
+```
+3
+```
+
+---
+
+### Penjelasan
+
+Pasangan yang memenuhi $|A_i - A_j| = 2$ adalah:  
+- (1, 3) dengan nilai (1, 3)  
+- (5, 3) dengan nilai (5, 3)  
+- (4, 2) dengan nilai (4, 2)
+
+---
+
+### Tantangan Efisiensi
+
+- Batas $N$ cukup besar, optimasi diperlukan untuk menghindari algoritma $\mathcal{O}(N^2)$.  
+- Solusi yang akan dibahas menggunakan struktur data **hash map** untuk pencarian komplement dalam waktu rata-rata $\mathcal{O}(N \log N)$.  
+- Alternatif lain pakai sorting + two-pointer dalam $\mathcal{O}(N \log N)$.
+
+### Contoh Solusi
+```
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+using namespace std;
+
+int main() {
+int N; long long K;
+cin >> N >> K;
+vector<long long> A(N);
+for (int i = 0; i < N; i++) cin >> A[i];
+unordered_map<long long, int> freq;
+long long count = 0;
+
+for (auto x : A) {
+    count += freq[x + K] + freq[x - K];
+    freq[x]++;
+}
+
+cout << count / 2 << "\n"; // Pasangan dihitung dua kali
+return 0;
+```
+
+
+---
+
+
+## Belajar Algorithm Design
+Belajar CP itu sangat open source. Semua ilmu dan algoritma-algoritma (mulai dari yang simpel, sampai yang aneh banget) itu semua ada di internet. Bahkan, solusi orang lain juga bisa kita baca dan kita pelajarin. 
+Hampir tiap soal juga pasti punya pembahasannya (gak semua sih, tapi you get the idea lah ya wkwk). Di bawah ini aku udah list beberapa platform dimana kalian bisa mengasah kemampuan CP kalian. 
+
+### TLX
+[TLX](https://tlx.toki.id/) adalah platform CP yang dibuat oleh Indonesia, lebih tepatnya TOKI (Tim Olimpiade Komputer Indonesia). Hampir semua orang Indonesia yang berkompetisi di CP itu mulai dari sini wkwk.  
+
+### CodeForces
+[CodeForces](https://codeforces.com/) adalah platform CP paling besar untuk saat ini. Platform ini punya paling banyak soal dan paling banyak active user nya. 
+Semua soal disini juga disediain pembahasannya, kita juga bisa lihat solusi orang lain. Salah satu fitur yang paling underrated adalah blog. Banyak banget blog-blog di CF yang sangat berguna buat segala kalangan, baik beginner, intermediate, ataupun advance
+
+### AtCoder
+[AtCoder](https://atcoder.jp/) adalah platform CP dari jepang (kayak TLX nya jepang gitu wkwk). Atcoder ini juga menurutku punya banyak banget problem yang sangat-sangat bagus. Ciri khas dari soal-soal atcoder adalah statementnya yang sangat straight-forward. Salah satu poin plus dari website ini adalah kontesnya, dimana tiap minggu pasti diadain ada kontes, kayak (Atcoder Beginner Contest), ARC (Atcoder Regular Contest),  atau AGC (Atcoder Grand Contest).
+Sama kayak Codeforces, hampir semua soal disini ada pembahasannya, dan kita juga bisa lihat solusi orang lain.
+
+### CSES
+[CSES](https://cses.fi/problemset/) ini menurutku salah satu platform yang paling bagus buat belajar hal-hal baru. Hampir semua soal yang ada disini itu ngenalin aku ke suatu hal yang baru aku tahu + sangat beginner friendly. CSES ini sendiri juga nyediain buku pegangan yang gratis dan juga dipakai dimana mana, layaknya standar internasional. Sayangnya, CSES engga ngasih pembahasan, dan kita gabisa lihat kode orang lain. Tapi untungnya, karena platform ini sangat dikenal, cukup banyak pembahasan yang dipublish sama orang-orang baik :D
+
+### HackerRank
+[HackerRank](https://www.hackerrank.com/) sebenernya platform buat belajar interview questions. Tapi, karena interview question biasanya nanyain tentang algoritma, platform ini juga jadi sumber yang bagus buat belajar CP, terutama buat pemula beginners.
+
+### Resource lain
+Seperti yang aku bilang di atas, ada banyak platform-platform lain yang bisa kalian eksplor, kayak [codechef](http://codechef.com/), [kattis](https://open.kattis.com/), [vjudge](http://vjudge.net/), [SPOJ](http://www.spoj.com/), [OJuz](https://oj.uz/).
+Apakah mending ngerjain semua atau fokus di satu website? Sebenernya suka-suka kalian wkwk :D
+
+## Belajar Implementation
+Seperti yang sudah pernah dibahas sebelumnya, di dunia Competitive Programming (CP), kita perlu menggabungkan antara desain algoritma dan implementasi kode. Tantangan terbesar saat mengerjakan soal CP itu adalah mengubah ide dan logika yang ada di kepala kita menjadi kode yang berjalan tanpa bug.
+
+Cuma satu bug saja bisa bikin hasil program kita salah atau bahkan gak jalan sama sekali. Nah, gimana sih cara buat ningkatin skill implementasi supaya makin jago dan minim bug?
+
+Jawabannya simpel: kerjakan soal CP sebanyak mungkin! Dengan sering latihan, kita jadi terbiasa dengan berbagai pola soal dan cara ngoding yang bikin kode lebih rapi dan bebas error. Selain itu, kamu juga bakal belajar cara debugging yang efektif.
+
+
+## Resource-Resource Penting 
+- [What is Competitive Programming - William Lin](https://www.youtube.com/watch?v=ueNT-w7Oluw&t=75s)
+- [How to Start Competitive Programming - Errichto](https://www.youtube.com/watch?v=xAeiXy8-9Y8&t=7s)
+- [Starting Competitive Programming, Steps and Mistake - William Lin](https://www.youtube.com/watch?v=bVKHRtafgPc)
+- [Pemrograman Kompetitif Dasar](https://osn.toki.id/arsip/download-pkd)
+- [Introduction to USA Computing Olympiad](http://darrenyao.com/usacobook/cpp.pdf)
+- [Competitive Programming Handbook](https://cses.fi/book/book.pdf)
+- [Competitive Programming Algorithms](https://cp-algorithms.com/)
+- [Fundemental of Algorithms](https://www.geeksforgeeks.org/fundamentals-of-algorithms/)
+- [Top Algorithm and Data Structure for Competitive Programming](https://www.geeksforgeeks.org/top-algorithms-and-data-structures-for-competitive-programming/)
+- [Other Awesome List for Competitive Programming](https://codeforces.com/blog/entry/23054?mobile=false#tutorial-websites)
+
+## Akhir kata
+Akhir kata, semoga guide ini bisa membantu. 
+Tak perlu takut dan mikir ```"apa aku punya talent yang cukup ya?"``` atau ```"Duh, telat gak ya mulai di kuliah?"```. 
+Karena kebanyakan yang menghalangi itu bukan "kurang talent", tapi distraksi-distraksi yang ada di sekitar kita. 
+Motivasi dan disiplin akan lebih berpengaruh dalam proses belajar dibandingkan talent.
+Percaya atau gak percaya, ada lumayan banyak orang yang sangat jago CP, padahal baru mulai waktu kuliah :D 
+Terima kasih dan selamat belajar!
+
+## Acknowledgment
+Terimakasih kepada Muhammad Hasan (IF'18) dan Kamal Shafi (IF'18) sebagai kontributor awal :D

@@ -23,6 +23,13 @@ const Blog = () => {
       slug: "ds-comp"
     },
     {
+      title: "What's Competitive Programming?", 
+      summary: "Beginner friendly guide untuk pemula yang ingin mengikuti kompetisi CP dan tips dalam berkompetisi CP.",
+      date: "2025-09-16",
+      readTime: "10 min",
+      category: "Competitive Programming",
+      author: "Muhammad Hasan (IF'18), M. Fariz Rifqi R. (IF'23)",
+      slug: "cp-intro"
       title: "Apa Itu Business Case Competition?",
       summary: "Panduan lengkap untuk yang ingin memulai Business Case Competition (BCC), dari definisi, jenis kompetisi, hingga manfaatnya untuk karier.",
       date: "2025-09-11",
@@ -66,6 +73,15 @@ const Blog = () => {
       author: "Frankie Huang (IF'21)",
       slug: "ctf-registerandstack"
     }
+    // {
+    //   title: "Competitive Programming 101", 
+    //   summary: "Hal-hal dasar yang wajib diketahui dalam dunia Competitive Programming.",
+    //   date: "2025-09-16",
+    //   readTime: "12 min",
+    //   category: "Competitive Programming",
+    //   author: "M. Fariz Rifqi R. (IF'23)",
+    //   slug: "cp-101"
+    // }
   ];
 
   const formatDate = (dateString: string) => {
