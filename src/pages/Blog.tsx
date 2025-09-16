@@ -21,6 +21,42 @@ const Blog = () => {
       category: "Data Science",
       author: "Dionisius Darryl Hermansyah (IF'19)",
       slug: "ds-comp"
+    },
+    {
+      title: "Guide to Capture The Flag", 
+      summary: "Beginner guide untuk pemula yang ingin mengikuti kompetisi capture the flag.",
+      date: "2021-09-12",
+      readTime: "10 min",
+      category: "Capture The Flag",
+      author: "Steve Bezalel (IF'18)",
+      slug: "ctf-guide"
+    },
+    {
+      title: "Introduction to Binary Exploitation", 
+      summary: "Beginner guide untuk pemula tertarik kategori Binary Exploitation.",
+      date: "2021-09-12",
+      readTime: "15 min",
+      category: "Capture The Flag",
+      author: "Muhammad Garebaldhie (IF'20)",
+      slug: "ctf-binaryexploitation"
+    },
+    {
+      title: "Introduction to Classic Cryptograhy", 
+      summary: "Beginner guide untuk pemula tertarik kategori Cryptography.",
+      date: "2021-09-12",
+      readTime: "15 min",
+      category: "Capture The Flag",
+      author: "Felicia Sutandijo (IF'20)",
+      slug: "ctf-classiccryptography"
+    },
+        {
+      title: "Introduction to Stack and Register", 
+      summary: "Beginner guide untuk pemahaman pada register dan stack.",
+      date: "2021-09-12",
+      readTime: "15 min",
+      category: "Capture The Flag",
+      author: "Frankie Huang (IF'21)",
+      slug: "ctf-registerandstack"
     }
   ];
 

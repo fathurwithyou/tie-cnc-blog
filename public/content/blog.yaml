@@ -16,6 +16,42 @@
   href: /blog/ds-comp
   mdx: ds-comp.mdx
 
+- title: Guide to Capture The Flag 
+  slug: ctf-guide
+  date: 2021-02-25
+  readTime: 8 min read
+  summary: Beginner guide untuk pemula yang ingin mengikuti kompetisi capture the flag.
+  topic: Capture The Flag
+  href: /blog/ctf-guide
+  mdx: ctf-guide.mdx
+
+- title: Register and Stack
+  slug: ctf-registerandstack
+  date: 2021-02-25
+  readTime: 10 min read
+  summary: Perkenalan kepada Register dan Stack.
+  topic: Capture The Flag
+  href: /blog/ctf-registerandstack
+  mdx: ctf-registerandstack.mdx
+
+- title: Binary Exploitation
+  slug: ctf-binaryexploitation
+  date: 2021-02-25
+  readTime: 15 min read
+  summary: Perkenalan kepada Binary Exploitation.
+  topic: Capture The Flag
+  href: /blog/ctf-binaryexploitation
+  mdx: ctf-binaryexploitation.mdx
+
+- title: Classic Cryptography
+  slug: ctf-classiccryptography
+  date: 2021-02-25
+  readTime: 15 min read
+  summary: Perkenalan kepada Classic Cryptography.
+  topic: Capture The Flag
+  href: /blog/ctf-classiccryptography
+  mdx: ctf-classiccryptography.mdx
+
 - title: Building Scalable React Applications
   slug: scalable-react
   date: 2024-03-05
