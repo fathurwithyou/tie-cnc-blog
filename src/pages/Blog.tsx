@@ -23,6 +23,14 @@ const Blog = () => {
       slug: "ds-comp"
     },
     {
+      title: "Apa Itu Business Case Competition?",
+      summary: "Panduan lengkap untuk yang ingin memulai Business Case Competition (BCC), dari definisi, jenis kompetisi, hingga manfaatnya untuk karier.",
+      date: "2025-09-11",
+      readTime: "7 min",
+      category: "Business Case",
+      slug: "intro_bcc"
+    },
+    {
       title: "Guide to Capture The Flag", 
       summary: "Beginner guide untuk pemula yang ingin mengikuti kompetisi capture the flag.",
       date: "2021-09-12",
