@@ -1,20 +1,62 @@
 - title: What's Data Science?
   slug: ds-101
   date: 2025-01-01
-  readTime: 8 min read
   summary: Data Science itu luas dan banyak yang bingung mau mulai masuk dari mana. Artikel ini dibuat dengan harapan untuk menjawab kebingungan itu.
   topic: Data Science
   href: /blog/ds-101
   mdx: ds-101.mdx
-
+  
 - title: Data Science Competition 101
   slug: ds-comp
   date: 2021-09-12
-  readTime: 12 min read
   summary: Beginner friendly guide untuk pemula yang ingin mengikuti kompetisi data science
   topic: Data Science
   href: /blog/ds-comp
   mdx: ds-comp.mdx
+  
+- title: Apa Itu Business Case Competition? 
+  slug: intro_bcc
+  date: 2025-09-11
+  summary: Panduan lengkap untuk yang ingin memulai Business Case Competition (BCC), dari definisi, jenis kompetisi, hingga manfaatnya untuk karier.
+  topic: Business Case
+  href: /blog/intro_bcc
+  mdx: intro_bcc.mdx
+  
+- title: Guide to Capture The Flag 
+  slug: ctf-guide
+  date: 2021-02-25
+  readTime: 8 min read
+  summary: Beginner guide untuk pemula yang ingin mengikuti kompetisi capture the flag.
+  topic: Capture The Flag
+  href: /blog/ctf-guide
+  mdx: ctf-guide.mdx
+
+- title: Register and Stack
+  slug: ctf-registerandstack
+  date: 2021-02-25
+  readTime: 10 min read
+  summary: Perkenalan kepada Register dan Stack.
+  topic: Capture The Flag
+  href: /blog/ctf-registerandstack
+  mdx: ctf-registerandstack.mdx
+
+- title: Binary Exploitation
+  slug: ctf-binaryexploitation
+  date: 2021-02-25
+  readTime: 15 min read
+  summary: Perkenalan kepada Binary Exploitation.
+  topic: Capture The Flag
+  href: /blog/ctf-binaryexploitation
+  mdx: ctf-binaryexploitation.mdx
+
+- title: Classic Cryptography
+  slug: ctf-classiccryptography
+  date: 2021-02-25
+  readTime: 15 min read
+  summary: Perkenalan kepada Classic Cryptography.
+  topic: Capture The Flag
+  href: /blog/ctf-classiccryptography
+  mdx: ctf-classiccryptography.mdx
 
 - title: What's Competitive Programming?
   slug: cp-intro
@@ -43,11 +85,34 @@
   href: /blog/scalable-react
   mdx: sample-post.mdx
 
-- title: Performance Optimization Deep Dive
-  slug: performance-deep-dive
-  date: 2024-02-25
-  readTime: 10 min read
-  summary: Techniques to improve web performance using modern tools and measurements.
-  topic: Performance
-  href: /blog/performance-deep-dive
-  mdx: sample-post.mdx
+- title: Anti Salah Sasaran, Cara Membedah Masalah Business Case Biar Solusimu Tepat Guna
+  slug: problem_bcc
+  date: 2025-09-11
+  summary: Panduan untuk membedah masalah dalam business case menggunakan framework SCQA, The 5 Whys, dan Issue Tree dengan prinsip MECE.
+  topic: Business Case
+  href: /blog/problem_bcc
+  mdx: problem_bcc.mdx
+
+- title: Membuka Kotak Perkakas Analisis, Framework Esensial yang Wajib Dikuasai
+  slug: framework_bcc
+  date: 2025-09-11
+  summary:  Panduan lengkap mengenai framework analisis esensial seperti PESTLE, Porter’s Five Forces, dan SWOT untuk memenangkan business case competition.
+  topic: Business Case
+  href: /blog/framework_bcc
+  mdx: framework_bcc.mdx
+
+- title: Dari Analisis ke Aksi, Merancang Solusi Bisnis yang Inovatif dan Realistis
+  slug: solution_bcc
+  date: 2025-09-11
+  summary: Panduan untuk merancang solusi bisnis yang inovatif, realistis, dan berbasis data menggunakan pendekatan hipotesis dan teknik brainstorming.
+  topic: Business Case
+  href: /blog/solution_bcc
+  mdx: solution_bcc.mdx
+
+- title: Membumikan Ide, Rencana Implementasi, Proyeksi Finansial, dan Mitigasi Risiko
+  slug: implementation_bcc
+  date: 2025-09-01
+  summary: Panduan untuk menyusun rencana implementasi, proyeksi finansial, dan mitigasi risiko yang solid agar ide bisnis dapat dieksekusi dengan baik.
+  topic: Business Case
+  href: /blog/implementation_bcc
+  mdx: implementation_bcc.mdx
