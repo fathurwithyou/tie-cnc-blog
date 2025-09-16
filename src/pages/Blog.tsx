@@ -30,16 +30,16 @@ const Blog = () => {
       category: "Competitive Programming",
       author: "Muhammad Hasan (IF'18), M. Fariz Rifqi R. (IF'23)",
       slug: "cp-intro"
-    },
-    {
-      title: "Competitive Programming 101", 
-      summary: "Hal-hal dasar yang wajib diketahui dalam dunia Competitive Programming.",
-      date: "2025-09-16",
-      readTime: "12 min",
-      category: "Competitive Programming",
-      author: "M. Fariz Rifqi R. (IF'23)",
-      slug: "cp-101"
     }
+    // {
+    //   title: "Competitive Programming 101", 
+    //   summary: "Hal-hal dasar yang wajib diketahui dalam dunia Competitive Programming.",
+    //   date: "2025-09-16",
+    //   readTime: "12 min",
+    //   category: "Competitive Programming",
+    //   author: "M. Fariz Rifqi R. (IF'23)",
+    //   slug: "cp-101"
+    // }
   ];
 
   const formatDate = (dateString: string) => {
