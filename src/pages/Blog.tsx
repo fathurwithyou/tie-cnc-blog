@@ -30,7 +30,8 @@ const Blog = () => {
       category: "Competitive Programming",
       author: "Muhammad Hasan (IF'18), M. Fariz Rifqi R. (IF'23)",
       slug: "cp-intro"
-    },{
+    },
+    {
       title: "Apa Itu Business Case Competition?",
       summary: "Panduan lengkap untuk yang ingin memulai Business Case Competition (BCC), dari definisi, jenis kompetisi, hingga manfaatnya untuk karier.",
       date: "2025-09-11",
@@ -65,7 +66,7 @@ const Blog = () => {
       author: "Felicia Sutandijo (IF'20)",
       slug: "ctf-classiccryptography"
     },
-        {
+    {
       title: "Introduction to Stack and Register", 
       summary: "Beginner guide untuk pemahaman pada register dan stack.",
       date: "2021-09-12",
